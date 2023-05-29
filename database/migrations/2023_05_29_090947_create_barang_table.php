@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('merk');
             $table->date('tanggal_pembelian');
             $table->date('batas_garansi');
-            $table->unsignedInteger('id_user');
-            $table->foreign('id_user')->references('id_user')->on('user');
+            $table->unsignedInteger('id_pembeli');
+            $table->foreign('id_pembeli')->references('id_user')->on('user');
         });
     }
 
