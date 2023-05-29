@@ -18,9 +18,9 @@ return new class extends Migration
             $table->date("tanggal_pengajuan");
             $table->date("tanggal_selesai");
             $table->string("status");
-            $table->unsignedBigInteger("id_admin");
-            $table->unsignedBigInteger("id_pembeli");
-            $table->unsignedBigInteger("id_barang");
+            $table->unsignedInteger("id_admin");
+            $table->unsignedInteger("id_pembeli");
+            $table->unsignedInteger("id_barang");
             $table->foreign("id_admin")->references('increments')->on('user')->onDelete('cascade');
             $table->foreign("id_pembeli")->references('increments')->on('user')->onDelete('cascade');
             $table->foreign("id_barang")->references('increments')->on('barang')->onDelete('cascade');
