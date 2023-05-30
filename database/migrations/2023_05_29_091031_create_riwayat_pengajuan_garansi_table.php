@@ -12,8 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('riwayat_pengajuan_garansi', function (Blueprint $table) {
-            $table->increments("id_riwayat_pengajuan_garansi");
-            $table->timestamps();
+            $table->id();
             $table->string("pengajuan");
             $table->date("tanggal_pengajuan");
             $table->date("tanggal_selesai");
@@ -21,9 +20,10 @@ return new class extends Migration
             $table->unsignedInteger("id_admin");
             $table->unsignedInteger("id_pembeli");
             $table->unsignedInteger("id_barang");
-            $table->foreign("id_admin")->references('id_user')->on('user');
-            $table->foreign("id_pembeli")->references('id_user')->on('user');
-            $table->foreign("id_barang")->references('id_barang')->on('barang');
+            $table->foreign("id_admin")->references('id')->on('user');
+            $table->foreign("id_pembeli")->references('id')->on('user');
+            $table->foreign("id_barang")->references('id')->on('barang');
+            $table->timestamps();
         });
     }
 

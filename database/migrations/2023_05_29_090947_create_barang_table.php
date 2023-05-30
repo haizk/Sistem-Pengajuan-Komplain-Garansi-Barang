@@ -12,8 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('barang', function (Blueprint $table) {
-            $table->increments('id_barang');
-            $table->timestamps();
+            $table->id();
             $table->string('nama');
             $table->float('harga');
             $table->integer('jumlah');
@@ -21,7 +20,8 @@ return new class extends Migration
             $table->date('tanggal_pembelian');
             $table->date('batas_garansi');
             $table->unsignedInteger('id_pembeli');
-            $table->foreign('id_pembeli')->references('id_user')->on('user');
+            $table->foreign('id_pembeli')->references('id')->on('user');
+            $table->timestamps();
         });
     }
 
