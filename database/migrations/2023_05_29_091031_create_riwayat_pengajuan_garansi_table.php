@@ -17,11 +17,11 @@ return new class extends Migration
             $table->date("tanggal_pengajuan");
             $table->date("tanggal_selesai");
             $table->string("status");
-            $table->unsignedInteger("id_admin");
-            $table->unsignedInteger("id_pembeli");
-            $table->unsignedInteger("id_barang");
-            $table->foreign("id_admin")->references('id')->on('user');
-            $table->foreign("id_pembeli")->references('id')->on('user');
+            $table->unsignedBigInteger("id_admin");
+            $table->unsignedBigInteger("id_pembeli");
+            $table->unsignedBigInteger("id_barang");
+            $table->foreign("id_admin")->references('id')->on('users');
+            $table->foreign("id_pembeli")->references('id')->on('users');
             $table->foreign("id_barang")->references('id')->on('barang');
             $table->timestamps();
         });
