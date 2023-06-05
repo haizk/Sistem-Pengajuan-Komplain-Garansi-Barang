@@ -18,4 +18,10 @@ class Riwayat_Tindakan extends Model
         'id_petugas',
         'id_pengajuan'
     ];
+
+    protected $hidden = [
+        'id',
+        'created_at',
+        'updated_at'
+    ];
 }
