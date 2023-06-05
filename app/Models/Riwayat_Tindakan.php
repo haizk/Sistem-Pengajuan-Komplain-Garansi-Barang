@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Riwayat_Tindakan extends Model
 {
     use HasFactory;
+
+
 }
