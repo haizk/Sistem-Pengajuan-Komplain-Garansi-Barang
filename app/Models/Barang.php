@@ -20,4 +20,10 @@ class Barang extends Model
         'batas_garansi',
         'id_pembeli'
     ];
+
+    protected $hidden = [
+        'id',
+        'created_at',
+        'updated_at'
+    ];
 }
