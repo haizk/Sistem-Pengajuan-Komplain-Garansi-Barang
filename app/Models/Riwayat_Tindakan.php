@@ -8,4 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class Riwayat_Tindakan extends Model
 {
     use HasFactory;
+
+    protected $table = 'riwayat_tindakan';
+
+    protected $fillable = [
+        'laporan',
+        'tanggal_tindakan',
+        'tindakan',
+        'id_petugas',
+        'id_pengajuan'
+    ];
+
+    protected $hidden = [
+        'id',
+        'created_at',
+        'update_at'
+    ];
 }
