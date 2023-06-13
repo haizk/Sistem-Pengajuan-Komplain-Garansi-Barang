@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->string('role')->default('user');
-            $table->string('nomor_hp')->default('0');
+            $table->string('nomor_hp')->nullable();
             $table->timestamps();
         });
     }
