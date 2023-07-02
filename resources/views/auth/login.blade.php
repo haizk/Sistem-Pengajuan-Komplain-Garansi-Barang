@@ -1,48 +1,56 @@
-<x-guest-layout>
-    <x-authentication-card>
-        <x-slot name="logo">
-            <x-authentication-card-logo />
-        </x-slot>
+<!DOCTYPE html>
+<html lang="en">
 
-        <x-validation-errors class="mb-4" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ asset('dist/assets/css/main/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('dist/assets/css/pages/auth.css') }}">
+    <link rel="shortcut icon" href="{{ asset('dist/assets/images/logo/favicon.svg') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('dist/assets/images/logo/favicon.png') }}" type="image/png">
+</head>
 
-        @if (session('status'))
-            <div class="mb-4 font-medium text-sm text-green-600">
-                {{ session('status') }}
+<body>
+    <div id="auth">
+        
+<div class="row h-100">
+    <div class="col-lg-5 col-12">
+        <div id="auth-left" style="padding-top: 50px; padding-bottom: 50px;">
+            <h1 class="auth-title" style="font-size: xxx-large;">Log In</h1>
+            <p class="auth-subtitle mb-5" style="font-size: large;">Log in with your data that you entered during registration.</p>
+
+            <form action="{{ route('login') }}" method="POST" >
+                @csrf
+                <div class="form-group position-relative has-icon-left mb-4">
+                    <input type="email" class="form-control form-control-xl" placeholder="Email" name="email" required>
+                    <div class="form-control-icon">
+                        <i class="bi bi-person"></i>
+                    </div>
+                </div>
+                <div class="form-group position-relative has-icon-left mb-4">
+                    <input type="password" class="form-control form-control-xl" placeholder="Password" name="password" required>
+                    <div class="form-control-icon">
+                        <i class="bi bi-shield-lock"></i>
+                    </div>
+                </div>
+                <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Log in</button>
+            </form>
+            <div class="text-center mt-5 text-lg fs-4">
+                <p class="text-gray-600" style="font-size: large;">Don't have an account? <a href="{{ route('register') }}" class="font-bold">Sign
+                        up</a>.</p>
+                <p><a class="font-bold" href="#" style="font-size: large;">Forgot password?</a></p>
             </div>
-        @endif
+        </div>
+    </div>
+    <div class="col-lg-7 d-none d-lg-block">
+        <div id="auth-right">
 
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
+        </div>
+    </div>
+</div>
 
-            <div>
-                <x-label for="email" value="{{ __('Email') }}" />
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            </div>
+    </div>
+</body>
 
-            <div class="mt-4">
-                <x-label for="password" value="{{ __('Password') }}" />
-                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
-            </div>
-
-            <div class="block mt-4">
-                <label for="remember_me" class="flex items-center">
-                    <x-checkbox id="remember_me" name="remember" />
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
-
-                <x-button class="ml-4">
-                    {{ __('Log in') }}
-                </x-button>
-            </div>
-        </form>
-    </x-authentication-card>
-</x-guest-layout>
+</html>
