@@ -19,8 +19,6 @@ return new class extends Migration
             $table->string('merk');
             $table->date('tanggal_pembelian');
             $table->date('batas_garansi');
-            $table->string('alasan_pengajuan');
-            $table->foreign('alasan_pengajuan')->references('pengajuan')->on('riwayat_pengajuan_garansi');
             $table->unsignedBigInteger('id_pembeli');
             $table->foreign('id_pembeli')->references('id')->on('users');
             $table->timestamps();

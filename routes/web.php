@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Riwayat_Pengajuan_Garansi;
+use App\Models\Riwayat_Tindakan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,3 +32,23 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+Route::get('/admin/dashboard', function() {
+    return view('admin.dashboard.index');
+})->name('admin');
+
+Route::get('/admin/pembeli', function() {
+    return view('admin.dashboard.pembeli');
+})->name('dataPembeli');
+
+Route::get('/admin/riwayat-pengajuan-garansi', function() {
+    return view('admin.dashboard.riwayat_pengajuan_garansi', [
+        'riwayat_pengajuan_garansi' => Riwayat_Pengajuan_Garansi::all()
+    ]);
+})->name('riwayatPengajuanGaransi');
+
+Route::get('/admin/riwayat-tindakan', function() {
+    return view('admin.dashboard.riwayat_tindakan', [
+        'riwayat_tindakan' => Riwayat_Tindakan::all()
+    ]);
+})->name('riwayatTindakan');
