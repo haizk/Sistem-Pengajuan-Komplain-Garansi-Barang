@@ -24,4 +24,14 @@ class Riwayat_Tindakan extends Model
         'created_at',
         'update_at'
     ];
+
+    public function User()
+    {
+        return $this->belongsTo(User::class);
+    }
+ 
+    public function Riwayat_Pengajuan_Garansi()
+    {
+        return $this->belongsTo(Riwayat_Pengajuan_Garansi::class);
+    }
 }

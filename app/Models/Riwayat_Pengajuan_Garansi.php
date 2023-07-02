@@ -22,4 +22,19 @@ class Riwayat_Pengajuan_Garansi extends Model
     ];
 
     protected $hidden = ['id', 'created_at', 'update_at'];
+
+    public function Riwayat_Tindakan()
+    {
+        return $this->hasMany(Riwayat_Tindakan::class);
+    }
+
+    public function User()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function Barang()
+    {
+        return $this->belongsTo(Barang::class);
+    }
 }

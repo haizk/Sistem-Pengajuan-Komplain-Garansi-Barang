@@ -26,4 +26,14 @@ class Barang extends Model
         'created_at',
         'updated_at'
     ];
+
+    public function Riwayat_Pengajuan_Garansi()
+    {
+        return $this->hasMany(Riwayat_Pengajuan_Garansi::class);
+    }
+
+    public function User()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
