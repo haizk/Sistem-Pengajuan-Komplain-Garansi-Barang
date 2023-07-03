@@ -2,6 +2,7 @@
 
 use App\Models\Riwayat_Pengajuan_Garansi;
 use App\Models\Riwayat_Tindakan;
+use App\Http\Controllers\pembeli\ComplainController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,28 +34,15 @@ Route::middleware([
     })->name('dashboard');
 });
 
-<<<<<<< HEAD
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-=======
-Route::get('/admin/dashboard', function() {
-    return view('admin.dashboard.index');
-})->name('admin');
 
-Route::get('/admin/pembeli', function() {
-    return view('admin.dashboard.pembeli');
-})->name('dataPembeli');
-
-Route::get('/admin/riwayat-pengajuan-garansi', function() {
-    return view('admin.dashboard.riwayat_pengajuan_garansi', [
-        'riwayat_pengajuan_garansi' => Riwayat_Pengajuan_Garansi::all()
-    ]);
-})->name('riwayatPengajuanGaransi');
-
-Route::get('/admin/riwayat-tindakan', function() {
-    return view('admin.dashboard.riwayat_tindakan', [
-        'riwayat_tindakan' => Riwayat_Tindakan::all()
-    ]);
-})->name('riwayatTindakan');
->>>>>>> dd8f9e53b0e1107ca24b27726b107ad7557faa14
+Route::group([
+    'prefix' => 'Pembeli',
+    'nameaspace' => 'App\Http\Controllers\Pembeli',
+    'middleware' => ['Auth', 'Pembeli'],
+    'as' => 'Pembeli.',
+], function(){
+    Route::resource('ComplainController', ComplainController::class)->except(['create', 'edit']);
+});
