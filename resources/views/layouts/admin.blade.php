@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Mazer Admin Dashboard</title>
+    <title>Dashboard - Admin</title>
     
-    @include('partials.style')
+    @include('partials.admin.style')
 
 </head>
 
@@ -33,7 +33,7 @@
         </div>
     </div>
     
-    @include('partials.sidebar')
+    @include('partials.admin.sidebar')
 
 </div>
         </div>
@@ -44,17 +44,14 @@
                 </a>
             </header>
             
-<div class="page-heading">
-    <h3>Profile Statistics</h3>
-</div>
-<div class="page-content">
-    @yield('content')
-</div>
+            <div class="page-content">
+                @yield('content')
+            </div>
 
-            @include('partials.footer')
+            @include('partials.admin.footer')
         </div>
     </div>
-    @include('partials.script')
+    @include('partials.admin.script')
 </body>
 
 </html>
