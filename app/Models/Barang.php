@@ -18,6 +18,7 @@ class Barang extends Model
         'merk',
         'tanggal_pembelian',
         'batas_garansi',
+        'foto',
         'id_pembeli'
     ];
 

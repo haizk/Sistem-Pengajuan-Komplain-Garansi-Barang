@@ -79,14 +79,26 @@
                         </a>
                     </div>
                     <div class="menu-inner-shadow"></div>
-                    
-                    <!-- start side Bar -->
-                    @include('partials.pembeli.sidebar')
-                    <!--end side bar-->
+                    <ul class="menu-inner py-1">
+                        <!-- start side Bar -->
+                        @include('partials.pembeli.sidebar')
+                        <!--end side bar-->
+                    </ul>
                 </aside>
-                @yield('container')
-                <!-- Footer -->
-                @include('partials.pembeli.footer')
+                <!-- / Menu -->
+                <!-- Layout container -->
+                <div class="layout-page">
+                    <!-- Navbar -->
+                    @include('partials.pembeli.navbar')
+                    <!-- / Navbar -->
+                    <!-- Content wrapper -->
+                    <div class="content-wrapper">
+                        <!-- Content -->
+                        @yield('container')
+                        <!-- / Content -->
+                        
+                        <!-- Footer -->
+                        @include('partials.pembeli.footer')
                         <!-- / Footer -->
                         <div class="content-backdrop fade"></div>
                     </div>
