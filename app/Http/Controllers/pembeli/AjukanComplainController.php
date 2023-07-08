@@ -15,12 +15,16 @@ class AjukanComplainController extends Controller
             'nama' => ['required', 'string'],
             'merk' => ['required', 'string'],
             'jumlah' => ['required', 'int'],
-            'harga' => ['required', 'float'],
-            'foto' => ['required', 'image', 'mimes:jpeg,png,jpg', 'max:2048'], // Validasi untuk foto
+            'harga' => ['required', 'int'],
+            //'foto' => ['required', 'image', 'mimes:jpeg,png,jpg', 'max:2048'], // Validasi untuk foto
         ]);
 
+        if(!$validated){
+            return redirect()->route('pages.pembeli.ajukan_garansi.index')->with('error', 'validated failed!');
+        }
         // Proses penyimpanan data barang dengan foto
 
+        /*
         if ($request->hasFile('foto')) {
             $file = $request->file('foto');
             $filename = $file->getClientOriginalName();
@@ -30,6 +34,7 @@ class AjukanComplainController extends Controller
                 return redirect()->route('pages.pembeli.ajukan_garansi.index')->with('error', 'validated failed!');
             }
         }
+        */
 
         /*// Simpan data barang beserta nama file foto ke dalam database
         $barang = new Barang();
@@ -48,7 +53,7 @@ class AjukanComplainController extends Controller
             'merk' => $validated['merk'],
             'jumlah' => $validated['jumlah'],
             'harga' => $validated['harga'],
-            'foto' => $validated['foto'],
+            //'foto' => $validated['foto'],
         ]);
 
         return redirect()->route('pages.pembeli.status_ajuan.index')->with('success', 'Created Successfully');

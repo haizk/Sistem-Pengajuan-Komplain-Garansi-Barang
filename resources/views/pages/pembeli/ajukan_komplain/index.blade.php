@@ -35,7 +35,7 @@
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label" for="basic-default-company">Jumlah</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="jumlah" placeholder="2" />
+                                <input type="number" class="form-control" id="jumlah" placeholder="2" />
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -43,10 +43,11 @@
                             <div class="col-sm-10">
                                 <div class="input-group input-group-merge">
                                     <span class="input-group-text">Rp</span>
-                                    <input type="text" class="form-control" id="harga" placeholder="150000" aria-label="Amount (to the nearest dollar)" />
+                                    <input type="number" class="form-control" id="harga" placeholder="150000"/>
                                 </div>
                             </div>
                         </div>
+                        <!--
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label" for="basic-default-phone">Bukti Struk</label>
                             <div class="col-sm-10">
@@ -56,6 +57,7 @@
                                 </div>
                             </div>
                         </div>
+                    -->
                         <div class="row justify-content-end">
                             <div class="col-sm-10">
                                 <button type="submit" class="btn btn-primary">Send</button>
