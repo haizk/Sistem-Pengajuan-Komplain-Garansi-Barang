@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
@@ -24,12 +27,21 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
+    protected function redirectTo( )
+    {
+        if (Auth::check() && Auth::user()->role == 'Pembeli'){
+            return '/pembeli';
+        } else {
+            return '/pembeli';
+        }
+    }
+
     /**
      * Where to redirect users after registration.
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    //protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('notelp')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->enum("role", ["Admin", "Administrator", "Pembeli", "Manager"]);
+            $table->enum("role", ["Admin", "Administrator", "Pembeli", "Manager"])->default("Pembeli");
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
