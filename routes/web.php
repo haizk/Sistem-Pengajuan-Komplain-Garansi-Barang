@@ -3,7 +3,8 @@
 use App\Models\Riwayat_Pengajuan_Garansi;
 use App\Models\Riwayat_Tindakan;
 use App\Http\Controllers\pembeli\ComplainController;
-use App\Http\Controllers\pembeli\AjukanComplainController as AjukanComplainController;
+use App\Http\Controllers\pembeli\StatusAjuanController;
+use App\Http\Controllers\pembeli\AjukanComplainController;
 use App\Http\Controllers\PembeliController;
 use App\Http\Middleware\PembeliMiddleware;
 use Illuminate\Support\Facades\Route;
@@ -29,13 +30,10 @@ Route::middleware(['auth', 'pembeli'])->group(function () {
         return view('pages.pembeli.index');
     })->name('pembeli.index');
     
+    Route::get('/pembeli/status_ajuan', [StatusAjuanController::class, 'index'])->name('pembeli.status_ajuan.index');
     Route::get('/pembeli/ajukan_komplain', function () {
         return view('pages.pembeli.ajukan_komplain.index');
     })->name('pembeli.ajukan_komplain.index');
-    
-    Route::get('/pembeli/status_ajuan', function () {
-        return view('pages.pembeli.status_ajuan.index');
-    })->name('pembeli.status_ajuan.index');
 
     Route::post('/pembeli/ajukan_komplain', [AjukanComplainController::class, 'store'])->name('pembeli.ajukan_komplain.store');
 });

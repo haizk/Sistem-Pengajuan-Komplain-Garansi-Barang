@@ -10,7 +10,7 @@
                         <div class="card-body">
                             <h5 class="card-title text-primary">Anda Berhasil Log in!</h5>
                             <p class="mb-4"> Selamat Datang di website Pengajuan Garansi! yuk klaim garansi kalian. </p>
-                            <a href="form.html" href="javascript:;" class="btn btn-sm btn-outline-primary">Ajukan Komplain</a>
+                            <a href="{{ route('pembeli.ajukan_komplain.index') }}" class="btn btn-sm btn-outline-primary">Ajukan Komplain</a>
                         </div>
                     </div>
                     <div class="col-sm-5 text-center text-sm-left">

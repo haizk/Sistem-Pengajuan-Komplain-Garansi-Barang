@@ -12,30 +12,36 @@
         <div class="col-xxl">
             <div class="card mb-4">
                 <div class="card-body">
-                    <form action="{{ route('pembeli.ajukan_komplain.store') }}" method="POST">
+                    <form action="{{ route('pembeli.ajukan_komplain.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label" for="basic-default-name">Tanggal Pembelian</label>
                             <div class="col-md-10">
-                                <input class="form-control" type="date" value="2021-06-18" id="tanggal_pembelian" />
+                                <input class="form-control" type="date" value="2021-06-18" id="tanggal_pembelian" name="tanggal_pembelian"/>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label" for="basic-default-name">Jenis Barang</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="nama" placeholder="Mouse Wireless" />
+                                <input type="text" class="form-control" id="nama" placeholder="Mouse Wireless" name="nama" />
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label" for="basic-default-company">Merk</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="merk" placeholder="Logitech" />
+                                <input type="text" class="form-control" id="merk" placeholder="Logitech" name="merk"/>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label" for="basic-default-company">Jumlah</label>
                             <div class="col-sm-10">
-                                <input type="number" class="form-control" id="jumlah" placeholder="2" />
+                                <input type="number" class="form-control" id="jumlah" placeholder="2" name="jumlah"/>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label class="col-sm-2 col-form-label" for="basic-default-name">Batas Garansi</label>
+                            <div class="col-md-10">
+                                <input class="form-control" type="date" value="2021-06-18" id="batas_garansi" name="batas_garansi"/>
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -43,21 +49,21 @@
                             <div class="col-sm-10">
                                 <div class="input-group input-group-merge">
                                     <span class="input-group-text">Rp</span>
-                                    <input type="number" class="form-control" id="harga" placeholder="150000"/>
+                                    <input type="number" class="form-control" id="harga" placeholder="150000" name="harga"/>
                                 </div>
                             </div>
                         </div>
-                        <!--
+                        
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label" for="basic-default-phone">Bukti Struk</label>
                             <div class="col-sm-10">
                                 <div class="input-group">
-                                    <input type="file" class="form-control" id="foto" aria-describedby="inputGroupFileAddon04" aria-label="Upload" />
-                                    <button class="btn btn-outline-primary" type="button" id="inputGroupFileAddon04">Upload</button>
+                                    <input type="file" class="form-control" id="foto" name="foto" aria-describedby="inputGroupFileAddon04" aria-label="Upload" />
+                                    <!--<button class="btn btn-outline-primary" type="button" id="inputGroupFileAddon04">Upload</button>-->
                                 </div>
                             </div>
                         </div>
-                    -->
+                    
                         <div class="row justify-content-end">
                             <div class="col-sm-10">
                                 <button type="submit" class="btn btn-primary">Send</button>

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string("tindakan");
             $table->unsignedBigInteger("id_petugas");
             $table->unsignedBigInteger("id_pengajuan");
+            
             $table->foreign('id_petugas')->references('id')->on('users');
             $table->foreign('id_pengajuan')->references('id')->on('riwayat_pengajuan_garansi');
             $table->timestamps();

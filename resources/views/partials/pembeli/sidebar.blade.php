@@ -18,8 +18,12 @@
     </a>
 </li>
 <li class="menu-item">
-    <a href="https://github.com/themeselection/sneat-html-admin-template-free/issues" target="_blank" class="menu-link">
+        <a href="#" onclick="document.getElementById('logout').click();" class="menu-link">
         <i class="menu-icon tf-icons bx bxs-log-out"></i>
         <div data-i18n="Support">Log out</div>
-    </a>
+    <form action="{{ route('logout') }}" method="POST" style="display: none;">
+        @csrf
+        <input type="submit" id="logout">
+    </form>
 </li>
+

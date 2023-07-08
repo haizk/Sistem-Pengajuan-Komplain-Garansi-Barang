@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\pembeli;
 
+use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 use Illuminate\Http\Request;
 use App\Models\Barang;
@@ -16,25 +18,27 @@ class AjukanComplainController extends Controller
             'merk' => ['required', 'string'],
             'jumlah' => ['required', 'int'],
             'harga' => ['required', 'int'],
-            //'foto' => ['required', 'image', 'mimes:jpeg,png,jpg', 'max:2048'], // Validasi untuk foto
+            'batas_garansi' => ['required', 'date'],
+            
+            'foto' => ['required', 'image', 'mimes:jpeg,png,jpg', 'max:2048'], // Validasi untuk foto
         ]);
 
         if(!$validated){
             return redirect()->route('pages.pembeli.ajukan_garansi.index')->with('error', 'validated failed!');
         }
         // Proses penyimpanan data barang dengan foto
-
-        /*
+        $idPembeli = auth()->user()->id;
+        
         if ($request->hasFile('foto')) {
             $file = $request->file('foto');
-            $filename = $file->getClientOriginalName();
+            $filename = Str::uuid() . '.' . $file->getClientOriginalName();
             $path = $file->storeAs('foto_barang', $filename, 'public');
             
             if(!$validated){
                 return redirect()->route('pages.pembeli.ajukan_garansi.index')->with('error', 'validated failed!');
             }
         }
-        */
+        
 
         /*// Simpan data barang beserta nama file foto ke dalam database
         $barang = new Barang();
@@ -53,10 +57,12 @@ class AjukanComplainController extends Controller
             'merk' => $validated['merk'],
             'jumlah' => $validated['jumlah'],
             'harga' => $validated['harga'],
-            //'foto' => $validated['foto'],
+            'id_pembeli' => $idPembeli,
+            'batas_garansi' => $validated['batas_garansi'],
+            'foto' => $filename,
         ]);
 
-        return redirect()->route('pages.pembeli.status_ajuan.index')->with('success', 'Created Successfully');
+        return redirect()->route('pembeli.status_ajuan.index')->with('success', 'Created Successfully');
 
     }
 }

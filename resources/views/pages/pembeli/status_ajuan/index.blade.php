@@ -8,7 +8,7 @@
 
     <!-- Responsive Table -->
     <div class="card">
-        <h5 class="card-header">Responsive Table</h5>
+        <h5 class="card-header">status Ajuan Garansi</h5>
         <div class="table-responsive text-nowrap">
             <table class="table">
                 <thead>
@@ -20,48 +20,24 @@
                         <th>Jumlah</th>
                         <th>Harga Satuan</th>
                         <th>Bukti Struk</th>
+                        <th>Batas Garansi</th>
                         <th>Status</th>
-                        <th>Table heading</th>
-                        <th>Table heading</th>
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($barangs as $barang)
                     <tr>
-                        <th scope="row">1</th>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
+                        <th scope="row">{{ $barang->id }}</th>
+                        <td>{{ $barang->tanggal_pembelian }}</td>
+                        <td>{{ $barang->nama }}</td>
+                        <td>{{ $barang->merk }}</td>
+                        <td>{{ $barang->jumlah }}</td>
+                        <td>{{ $barang->harga }}</td>
+                        <td><img src="{{ asset('storage/foto_barang/'. $barang->foto) }}" width="100"></td>
+                        <td>{{ $barang->batas_garansi }}</td>
                         <td>Table cell</td>
                     </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
