@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nama');
             $table->integer('harga');
             $table->unsignedBigInteger('id_merk');
-            $table->foreign('id_merk')->references('id')->on('merks');
+            $table->foreign('id_merk')->references('id')->on('merks')->onDelete('cascade');
             $table->timestamps();
         });
     }
