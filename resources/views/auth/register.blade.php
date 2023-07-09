@@ -15,7 +15,7 @@
     <div id="auth">    
     <div class="row h-100">
     <div class="col-lg-5 col-12">
-        <div id="auth-left" style="padding-top: 50px; padding-bottom: 50px;">
+        <div id="auth-left" style="padding-top: 30px; padding-bottom: 0px;">
             <h1 class="auth-title" style="font-size: xxx-large;">Sign Up</h1>
             <p class="auth-subtitle mb-4" style="font-size: large;">Input your data to register to our website.</p>
 

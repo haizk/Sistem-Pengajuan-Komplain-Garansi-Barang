@@ -13,8 +13,22 @@ class BarangSeeder extends Seeder
      */
     public function run(): void
     {
-        Barang::factory()
-            ->count(10)
-            ->create();
+        Barang::create([
+            'nama' => 'Panasonic',
+            'harga' => '300000',
+            'id_merk' => '1'
+        ]);
+
+        Barang::create([
+            'nama' => 'Panasonic',
+            'harga' => '300000',
+            'id_merk' => '2'
+        ]);
+
+        Barang::create([
+            'nama' => 'Panasonic',
+            'harga' => '300000',
+            'id_merk' => '3'
+        ]);
     }
 }

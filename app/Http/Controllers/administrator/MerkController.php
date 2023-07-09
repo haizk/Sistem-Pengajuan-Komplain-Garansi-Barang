@@ -10,7 +10,7 @@ use App\Models\Barang;
 class MerkController extends Controller
 {
     public function index(Request $request){
-        $merks = Merk::all();
+        $merks = Merk::paginate(25);
 
         return view('pages.administrator.merk.index', [
             'merks' => $merks
