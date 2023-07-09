@@ -44,6 +44,7 @@ Route::middleware(['auth', 'pembeli'])->group(function () {
 Route::middleware(['auth', 'admin'])->group(function () {
     
     Route::resource('/admin/data-riwayat-tindakan', DataRiwayatTindakanController::class);
+    Route::post('/admin/data-riwayat-tindakan', [DataRiwayatTindakanController::class, 'store'])->name('admin.data-riwayat-tindakan.store');
     Route::resource('/admin/data-pengajuan-garansi', DataPengajuanGaransiController::class);
 });
 
