@@ -1,18 +1,20 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
+use App\Models\Riwayat_Tindakan;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class PembeliController extends Controller
+class DataRiwayatTindakanController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('admin.dashboard.index', [
-            'pembeli' => Project::all()
+        return view('pages.admin.dataRiwayatTindakan.index', [
+            'riwayat_tindakan' => Riwayat_Tindakan::all()
         ]);
     }
 
@@ -35,7 +37,7 @@ class PembeliController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Riwayat_Tindakan $riwayat_Tindakan)
     {
         //
     }
@@ -43,7 +45,7 @@ class PembeliController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Riwayat_Tindakan $riwayat_Tindakan)
     {
         //
     }
@@ -51,7 +53,7 @@ class PembeliController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Riwayat_Tindakan $riwayat_Tindakan)
     {
         //
     }
@@ -59,7 +61,7 @@ class PembeliController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Riwayat_Tindakan $riwayat_Tindakan)
     {
         //
     }
