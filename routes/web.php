@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controller\administrator\BarangController as AdministratorBarangController;
 use App\Models\Merk;
 use App\Models\Barang;
 use App\Http\Controllers\admin\DataPengajuanGaransiController;
@@ -53,12 +54,24 @@ Route::middleware(['auth', 'manager'])->group(function () {
 });
 
 Route::middleware(['auth', 'administrator'])->group(function () {
+    Route::get('/administrator', function () {
+        return view('pages.administrator.index');
+    })->name('administrator.index');
+
     // Rute untuk MerkController
     Route::get('/administrator/merk', [MerkController::class, 'index'])->name('administrator.merk.index');
     Route::post('/administrator/merk', [MerkController::class, 'store'])->name('administrator.merk.store');
     Route::get('/administrator/merk/{id}/edit', [MerkController::class, 'edit']) -> name('administrator.merk.edit');
     Route::put('/administrator/merk/{id}', [MerkController::class, 'update']) -> name('administrator.merk.update');
     Route::delete('/administrator/merk/{id}', [MerkController::class, 'destroy']) -> name('administrator.merk.destroy');
+
+    // Rute untuk BarangController
+    Route::get('/administrator/barang', [BarangController::class, 'index'])->name('administrator.barang.index');
+    Route::post('/administrator/barang', [BarangController::class, 'store'])->name('administrator.barang.store');
+    Route::get('/administrator/barang/{id}/edit', [BarangController::class, 'edit']) -> name('administrator.barang.edit');
+    Route::put('/administrator/barang/{id}', [BarangController::class, 'update']) -> name('administrator.barang.update');
+    Route::delete('/administrator/barang/{id}', [BarangController::class, 'destroy']) -> name('administrator.barang.destroy');
+
 });
 
 
