@@ -16,10 +16,11 @@ return new class extends Migration
             $table->string("pengajuan");
             $table->date("tanggal_pengajuan");
             $table->date("tanggal_selesai");
-            $table->string("status");
-            $table->unsignedBigInteger("id_admin");
+            $table->string("status")->default('Pending');
+            $table->unsignedBigInteger("id_admin")->nullable();
             $table->unsignedBigInteger("id_pembeli");
             $table->unsignedBigInteger("id_barang");
+
             $table->foreign("id_admin")->references('id')->on('users');
             $table->foreign("id_pembeli")->references('id')->on('users');
             $table->foreign("id_barang")->references('id')->on('barang');

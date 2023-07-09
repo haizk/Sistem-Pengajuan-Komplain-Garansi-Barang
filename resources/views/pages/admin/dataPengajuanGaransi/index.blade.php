@@ -1,4 +1,4 @@
-@extends('admin.dashboard.layouts.main')
+@extends('layouts.admin')
 
 @section('content')
 
@@ -19,16 +19,16 @@
         </tr>
       </thead>
       <tbody class="table-hover">
-        @foreach ($riwayat_pengajuan_garansi as $pengajuan_garansi)
+        @foreach ($complains as $complain)
             <tr>
-            <td>{{ $loop->iteration }}</td>
-            <td>{{ $pengajuan_garansi->pengajuan }}</td>
-            <td>{{ $pengajuan_garansi->tanggal_pengajuan }}</td>
-            <td>{{ $pengajuan_garansi->tanggal_selesai }}</td>
-            <td>{{ $pengajuan_garansi->status }}</td>
-            <td>{{ $pengajuan_garansi->id_admin }}</td>
-            <td>{{ $pengajuan_garansi->id_pembeli }}</td>
-            <td>{{ $pengajuan_garansi->id_barang }}</td>
+            <td>{{ $complain->id }}</td>
+            <td>{{ $complain->pengajuan }}</td>
+            <td>{{ $complain->tanggal_pengajuan }}</td>
+            <td>{{ $complain->tanggal_selesai }}</td>
+            <td>{{ $complain->status }}</td>
+            <td>{{ $complain->id_admin }}</td>
+            <td>{{ $complain->id_pembeli }}</td>
+            <td>{{ $complain->id_barang }}</td>
             <td>
                 <button class="btn btn-warning">Edit</button>
                 <button class="btn btn-danger">Edit</button>
