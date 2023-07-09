@@ -5,16 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Barang extends Model
+class Petugas extends Model
 {
     use HasFactory;
 
-    protected $table = 'barang';
+    protected $table = 'petugas';
 
     protected $fillable = [
         'nama',
-        'harga',
-        'id_merk'
     ];
 
     protected $hidden = [
@@ -23,13 +21,8 @@ class Barang extends Model
         'updated_at'
     ];
 
-    public function Komplain()
+    public function Histori()
     {
-        return $this->hasMany(Komplain::class);
-    }
-
-    public function Merk()
-    {
-        return $this->belongsTo(Merk::class, 'id_merk');
+        return $this->hasMany(Histori::class);
     }
 }

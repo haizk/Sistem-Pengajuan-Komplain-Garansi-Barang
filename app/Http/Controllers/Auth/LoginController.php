@@ -30,6 +30,12 @@ class LoginController extends Controller
     {
         if ($user->role == 'Pembeli'){
             return Redirect::intended('/pembeli');
+        }  
+        else if ($user->role == 'Admin'){
+            return Redirect::intended('/admin/datapengajuangaransi');
+        }
+        else if ($user->role == 'Administrator'){
+            return Redirect::intended('/administrator/merk');
         }
     }
     /**

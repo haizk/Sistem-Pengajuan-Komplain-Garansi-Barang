@@ -6,20 +6,27 @@ use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
+use App\Models\Merk;
 use Illuminate\Http\Request;
 use App\Models\Barang;
+use App\Models\Komplain;
 
 class AjukanComplainController extends Controller
 {
+    public function index() {
+        $barangList = Barang::pluck('nama', 'id');
+        $merkList = Merk::pluck('nama', 'id');
+
+        return view('pages.pembeli.ajukan_komplain.index', ['barangList' => $barangList], ['merkList' => $merkList]);
+    }
+
     public function store(Request $request){
         $validated = $request->validate([
             'tanggal_pembelian' => ['required', 'date'],
-            'nama' => ['required', 'string'],
-            'merk' => ['required', 'string'],
-            'jumlah' => ['required', 'int'],
-            'harga' => ['required', 'int'],
             'batas_garansi' => ['required', 'date'],
-            
+            'keluhan' => ['required', 'string'],
+            'id_merk' => ['required', 'int'],
+            'id_barang' => ['required', 'int'],
             'foto' => ['required', 'image', 'mimes:jpeg,png,jpg', 'max:2048'], // Validasi untuk foto
         ]);
 
@@ -28,11 +35,12 @@ class AjukanComplainController extends Controller
         }
         // Proses penyimpanan data barang dengan foto
         $idPembeli = auth()->user()->id;
-        
+        $status = 'Pending';
+
         if ($request->hasFile('foto')) {
             $file = $request->file('foto');
             $filename = Str::uuid() . '.' . $file->getClientOriginalName();
-            $path = $file->storeAs('foto_barang', $filename, 'public');
+            $path = $file->storeAs('foto', $filename, 'public');
             
             if(!$validated){
                 return redirect()->route('pages.pembeli.ajukan_garansi.index')->with('error', 'validated failed!');
@@ -51,14 +59,14 @@ class AjukanComplainController extends Controller
         $barang->save();*/
 
         // Create Menu
-        Barang::Create([
+        Komplain::Create([
             'tanggal_pembelian' => $validated['tanggal_pembelian'],
-            'nama' => $validated['nama'],
-            'merk' => $validated['merk'],
-            'jumlah' => $validated['jumlah'],
-            'harga' => $validated['harga'],
+            'keluhan' => $validated['keluhan'],
+            'id_merk' => $validated['id_merk'],
+            'id_barang' => $validated['id_barang'],
             'id_pembeli' => $idPembeli,
             'batas_garansi' => $validated['batas_garansi'],
+            'status' => $status,
             'foto' => $filename,
         ]);
 

@@ -32,11 +32,16 @@
         </li>
 
         <li class="sidebar-item">
-            <a href="#" class='sidebar-link'>
+            <a href="#" onclick="document.getElementById('logout').click();" class='sidebar-link'>
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Logout</span>
+                <form action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                    <input type="submit" id="logout">
             </a>
         </li>
+        
+    
         
     </ul>
 </div>

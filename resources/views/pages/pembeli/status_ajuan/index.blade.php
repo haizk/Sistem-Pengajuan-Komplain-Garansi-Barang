@@ -14,28 +14,28 @@
                 <thead>
                     <tr class="text-nowrap">
                         <th>No</th>
-                        <th>Tanggal Pembelian</th>
-                        <th>Jenis Barang</th>
                         <th>Merk</th>
-                        <th>Jumlah</th>
-                        <th>Harga Satuan</th>
-                        <th>Bukti Struk</th>
+                        <th>Nama Barang</th>
+                        <th>Harga</th>
+                        <th>Tanggal Pembelian</th>
                         <th>Batas Garansi</th>
+                        <th>Keluhan</th>
+                        <th>Bukti Struk</th>
                         <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($barangs as $barang)
+                    @foreach ($complains as $complain)
                     <tr>
-                        <th scope="row">{{ $barang->id }}</th>
-                        <td>{{ $barang->tanggal_pembelian }}</td>
-                        <td>{{ $barang->nama }}</td>
-                        <td>{{ $barang->merk }}</td>
-                        <td>{{ $barang->jumlah }}</td>
-                        <td>{{ $barang->harga }}</td>
-                        <td><img src="{{ asset('storage/foto_barang/'. $barang->foto) }}" width="100"></td>
-                        <td>{{ $barang->batas_garansi }}</td>
-                        <td>Table cell</td>
+                        <th scope="row">{{ $complain->id }}</th>
+                        <td>{{ $complain->barang->merk->nama }}</td>
+                        <td>{{ $complain->barang->nama }}</td>
+                        <td>Rp{{ $complain->barang->harga }}</td>
+                        <td>{{ $complain->tanggal_pembelian }}</td>
+                        <td>{{ $complain->batas_garansi }}</td>
+                        <td>{{ $complain->keluhan }}</td>
+                        <td><img src="{{ asset('storage/foto/'. $complain->foto) }}" width="100"></td>
+                        <td>{{ $complain->status }}</td>
                     </tr>
                     @endforeach
                 </tbody>

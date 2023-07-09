@@ -17,7 +17,7 @@ return new class extends Migration
             $table->date("tanggal_pengajuan");
             $table->date("tanggal_selesai");
             $table->string("status")->default('Pending');
-            $table->unsignedBigInteger("id_admin");
+            $table->unsignedBigInteger("id_admin")->nullable();
             $table->unsignedBigInteger("id_pembeli");
             $table->unsignedBigInteger("id_barang");
 
