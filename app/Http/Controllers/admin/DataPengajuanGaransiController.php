@@ -9,27 +9,37 @@ use App\Http\Controllers\Controller;
 
 class DataPengajuanGaransiController extends Controller
 {
-    public function index(Request $request){
-        $complains = Komplain::all();
-        return view('pages.admin.dataPengajuanGaransi.index', compact('complains'));
+    public function index()
+    {
+        return view('pages.admin.dataPengajuanGaransi.index', [
+            'title' => 'Komplain',
+            'complains' => Komplain::all()
+        ]);
+    }
+
+    public function edit(Komplain $complain)
+    {
+        return view('pages.admin.dataPengajuanGaransi.edit', [
+            'title' => 'Edit Data',
+            'complain' => $complain,
+        ]);
     }
 
     public function update(Request $request, Komplain $complain)
     {
         $validatedData = $request->validate([
-            'status' => 'required'
+            'tanggal_pembelian' => 'required| date',
+            'batas_garansi' => 'required| date',
+            'keluhan' => 'required| string',
+            'status' => 'required| string',
+            'id_barang' => 'required',
+            'id_pembeli' => 'required',
+            'foto' => 'nullable| image| file| mimes:jpeg,png,jpg,gif,svg| max:2048',
         ]);
 
         Komplain::where('id', $complain->id)
             ->update($validatedData);
 
-        return back();
+        return redirect('/admin/data-pengajuan-garansi')->with('success', 'Data berhasil diubah!');
     }
-
-    // public function show(Komplain $komplain)
-    // {
-    //     return view('pages.admin.dataRiwayatTindakan.index', [
-    //         'complains' => $komplain
-    //     ]);
-    // }
 }
