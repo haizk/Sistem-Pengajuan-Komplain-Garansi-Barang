@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Models\Komplain;
 use App\Models\Histori;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -13,9 +14,16 @@ class DataRiwayatTindakanController extends Controller
      */
     public function index()
     {
-        return view('pages.admin.dataRiwayatTindakan.index', [
-            'Histori' => Histori::all()
-        ]);
+        // $komplainIDs = Komplain::pluck('id');
+        // $komplain = Komplain::pluck('id');
+
+        // Histori::where('id_komplain', $komplain->id)
+        //     return view('pages.admin.dataRiwayatTindakan.index', [
+        //         'historis' => Histori::all()
+        //     ]);
+        
+        $historis = Histori::all();
+        return view('pages.admin.dataRiwayatTindakan.index', compact('historis'));
     }
 
     /**
@@ -39,7 +47,13 @@ class DataRiwayatTindakanController extends Controller
      */
     public function show(Histori $histori)
     {
-        //
+        // $komplain = Komplain::find('id');
+
+        // if ($histori == $komplain) {
+        //     return view('pages.admin.dataRiwayatTindakan.index', [
+        //         'historis' => $histori
+        //     ]);
+        // }
     }
 
     /**

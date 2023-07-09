@@ -35,7 +35,7 @@
                   <span class="badge bg-secondary">Diterima</span>
                 @endif
               </div>
-              <a href="/admin/data-riwayat-tindakan/{{ $complain->id }}">Riwayat Tindakan</a>
+              <a href="/admin/data-riwayat-tindakan">Riwayat Tindakan</a>
             </td>
             <td>{{ $complain->id_barang }}</td>
             <td>{{ $complain->id_pembeli }}</td>

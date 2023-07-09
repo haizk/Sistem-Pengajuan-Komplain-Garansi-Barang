@@ -13,4 +13,11 @@ class DataPengajuanGaransiController extends Controller
         $complains = Komplain::all();
         return view('pages.admin.dataPengajuanGaransi.index', compact('complains'));
     }
+
+    // public function show(Komplain $komplain)
+    // {
+    //     return view('pages.admin.dataRiwayatTindakan.index', [
+    //         'complains' => $komplain
+    //     ]);
+    // }
 }

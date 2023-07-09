@@ -8,23 +8,25 @@
       <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Laporan</th>
-          <th scope="col">Tanggal Tindakan</th>
           <th scope="col">Tindakan</th>
-          <th scope="col">Petugas</th>
-          <th scope="col">ID Pengajuan</th>
+          <th scope="col">Tanggal Tindakan</th>
+          <th scope="col">ID Komplain</th>
+          <th scope="col">ID Petugas</th>
           <th scope="col">Aksi</th>
         </tr>
       </thead>
       <tbody class="table-hover">
-        @foreach ($riwayat_tindakan as $tindakan)
+        @foreach ($historis as $histori)
             <tr>
             <td>{{ $loop->iteration }}</td>
-            <td>{{ $tindakan->laporan }}</td>
-            <td>{{ $tindakan->tanggal_tindakan }}</td>
-            <td>{{ $tindakan->tindakan }}</td>
-            <td>{{ $tindakan->id_petugas }}</td>
-            <td>{{ $tindakan->id_pengajuan }}</td>
+            <td>{{ $histori->tindakan }}</td>
+            <td>{{ $histori->tanggal_tindakan }}</td>
+            <td>{{ $histori->id_komplain }}</td>
+            <td>{{ $histori->id_petugas }}</td>
+            <td>
+              <button class="btn btn-warning"><i class="bi bi-pencil-square"></i></button>
+              <button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
+          </td>
           </tr>
         @endforeach
       </tbody>
