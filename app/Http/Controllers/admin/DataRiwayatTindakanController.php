@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Models\Riwayat_Tindakan;
+use App\Models\Histori;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +14,7 @@ class DataRiwayatTindakanController extends Controller
     public function index()
     {
         return view('pages.admin.dataRiwayatTindakan.index', [
-            'riwayat_tindakan' => Riwayat_Tindakan::all()
+            'Histori' => Histori::all()
         ]);
     }
 
@@ -37,7 +37,7 @@ class DataRiwayatTindakanController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Riwayat_Tindakan $riwayat_Tindakan)
+    public function show(Histori $histori)
     {
         //
     }
@@ -45,7 +45,7 @@ class DataRiwayatTindakanController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Riwayat_Tindakan $riwayat_Tindakan)
+    public function edit(Histori $histori)
     {
         //
     }
@@ -53,7 +53,7 @@ class DataRiwayatTindakanController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Riwayat_Tindakan $riwayat_Tindakan)
+    public function update(Request $request, Histori $histori)
     {
         //
     }
@@ -61,7 +61,7 @@ class DataRiwayatTindakanController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Riwayat_Tindakan $riwayat_Tindakan)
+    public function destroy(Histori $histori)
     {
         //
     }

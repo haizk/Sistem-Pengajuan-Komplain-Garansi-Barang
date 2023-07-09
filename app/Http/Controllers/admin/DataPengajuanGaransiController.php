@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Models\Riwayat_Pengajuan_Garansi;
+use App\Models\Komplain;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -10,7 +10,7 @@ use App\Http\Controllers\Controller;
 class DataPengajuanGaransiController extends Controller
 {
     public function index(Request $request){
-        $complains = Riwayat_Pengajuan_Garansi::all();
+        $complains = Komplain::all();
         return view('pages.admin.dataPengajuanGaransi.index', compact('complains'));
     }
 }

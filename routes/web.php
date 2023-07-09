@@ -41,7 +41,7 @@ Route::middleware(['auth', 'pembeli'])->group(function () {
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/admin/data-pengajuan-garansi', [DataPengajuanGaransiController::class, 'index'])->name('admin.dataPengajuanGaransi.index');
+    
     Route::get('/admin/data-riwayat-tindakan', [DataRiwayatTindakanController::class, 'index'])->name('admin.dataRiwayatTindakan.index');
 });
 
@@ -84,5 +84,4 @@ Route::middleware([
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('/admin/pembeli', BarangController::class);
-Route::resource('/admin/riwayat-tindakan', Riwayat_TindakanController::class);
+Route::get('/admin/data-pengajuan-garansi', [DataPengajuanGaransiController::class, 'index'])->name('admin.dataPengajuanGaransi.index');
