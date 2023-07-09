@@ -37,9 +37,31 @@ class DataRiwayatTindakanController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request){
+        $validated = $request->validate([
+            'tanggal_tindakan' => ['required', 'date'],
+            'tindakan' => ['required', 'string'],
+            'id_komplain' => ['required', 'int'],
+            'id_petugas' => ['required', 'int'],
+        ]);
+
+        if(!$validated){
+            return redirect()->route('pages.admin.dataPengajuanGaransi.index')->with('error', 'validated failed!');
+        }
+        // Proses penyimpanan data barang dengan foto
+        $idAdmin = auth()->user()->id;
+        $status = 'Pending';
+
+        // Create Menu
+        Histori::Create([
+            'tanggal_tindakan' => $validated['tanggal_tindakan'],
+            'tindakan' => $validated['tindakan'],
+            'id_komplain' => $validated['id_komplain'],
+            'id_petugas' => $validated['id_petugas'],
+        ]);
+
+        return redirect()->route('pages.admin.dataRiwayatTindakan.index')->with('success', 'Created Successfully');
+
     }
 
     /**

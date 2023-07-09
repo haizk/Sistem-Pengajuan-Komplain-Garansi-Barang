@@ -1,36 +1,56 @@
-@extends('layouts.admin')
+@extends('layouts.pembeli')
 
-@section('content')
+@section('container')
 
-<h3>Riwayat Tindakan</h3>
-<div class="table-responsive col-lg-10">
-    <table class="table table-striped table-dark table-bordered text-center">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Tindakan</th>
-          <th scope="col">Tanggal Tindakan</th>
-          <th scope="col">ID Komplain</th>
-          <th scope="col">ID Petugas</th>
-          <th scope="col">Aksi</th>
-        </tr>
-      </thead>
-      <tbody class="table-hover">
-        @foreach ($historis as $histori)
-            <tr>
-            <td>{{ $loop->iteration }}</td>
-            <td>{{ $histori->tindakan }}</td>
-            <td>{{ $histori->tanggal_tindakan }}</td>
-            <td>{{ $histori->id_komplain }}</td>
-            <td>{{ $histori->id_petugas }}</td>
-            <td>
-              <button class="btn btn-warning"><i class="bi bi-pencil-square"></i></button>
-              <button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
-          </td>
-          </tr>
-        @endforeach
-      </tbody>
-    </table>
-  </div>
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4">
+        <span class="text-muted fw-light">Riwayat Tindakan /</span> Tindakan
+    </h4>
+    <!-- Basic Layout & Basic with Icons -->
+    <div class="row">
+        <!-- Basic Layout -->
+        <div class="col-xxl">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <form action="{{ route('admin.data-riwayat-tindakan.store') }}" method="POST"
+                        enctype="multipart/form-data">
+                        @csrf
+                        <div class="mt-2 mb-3">
+                            <label for="text" class="form-label">Komplain</label>
+                            <input class="form-control" name="id_komplain" id="id_komplain">
+                            </input>
+                        </div>
+                        <div class="mt-2 mb-3">
+                            <label for="text" class="form-label">Tindakan</label>
+                            <input class="form-control" name="tindakan" id="tindakan">
+                            </input>
+                        </div>
+                        <div class="row mb-3">
+                            <label class="col-sm-2 col-form-label" for="basic-default-name">Tanggal Tindakan</label>
+                            <div class="col-md-10">
+                                <input class="form-control" type="date" value="2021-06-18" id="tanggal_tindakan"
+                                    name="tanggal_tindakan" />
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label class="col-sm-2 col-form-label" for="basic-default-name">Petugas</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="id_petugas"
+                                    name="id_petugas" />
+                            </div>
+                        </div>
+                        <div class="row justify-content-end">
+                            <div class="col-sm-auto">
+                                <button type="submit" class="btn btn-primary">Send</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Basic with Icons -->
+    </div>
+</div>
 
 @endsection
