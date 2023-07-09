@@ -4,7 +4,7 @@
 
 <h3>Riwayat Tindakan</h3>
 <div class="table-responsive col-lg-10">
-    <table class="table table-striped table-dark table-bordered">
+    <table class="table table-striped table-dark table-bordered text-center">
       <thead>
         <tr>
           <th scope="col">#</th>

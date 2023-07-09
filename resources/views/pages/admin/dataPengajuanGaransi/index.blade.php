@@ -4,7 +4,7 @@
 
 <h3>Riwayat Pengajuan Garansi</h3>
 <div class="table-responsive col-lg-11 mt-5">
-    <table class="table table-striped table-dark table-bordered">
+    <table class="table table-striped table-dark table-bordered text-center">
       <thead>
         <tr>
           <th scope="col">#</th>
@@ -15,7 +15,7 @@
           <th scope="col">ID Barang</th>
           <th scope="col">ID Pembeli</th>
           <th scope="col">Foto</th>
-          <th scope="col">Aksi</th>
+          <th scope="col">Riwayat Tindakan</th>
         </tr>
       </thead>
       <tbody class="table-hover">
@@ -26,24 +26,30 @@
             <td>{{ $complain->batas_garansi }}</td>
             <td>{{ $complain->keluhan }}</td>
             <td>
-              <div>
-                @if ($complain->status == 'Selesai')
-                  <span class="badge bg-success">Selesai</span>
-                @elseif ($complain->status == 'Diproses')
-                  <span class="badge bg-warning">Diproses</span>
-                @elseif ($complain->status == 'Diterima')
-                  <span class="badge bg-secondary">Diterima</span>
-                @endif
-              </div>
-              <a href="/admin/data-riwayat-tindakan">Riwayat Tindakan</a>
+              <form action="/admin/data-pengajuan-garansi/{{ $complain->id }}" method="post">
+                @method('put')
+                @csrf
+                <select class="form-select" action="/admin/data-pengajuan-garansi/{{ $complain->id }}" method="post">
+                  @if ($complain->status == 'Diterima')
+                    <option selected name="status">{{ $complain->status }}</option>
+                    <option value="1" name="status">{{ $complain->status = 'Diproses' }}</option>
+                    <option value="2" name="status">{{ $complain->status = 'Selesai' }}</option>
+                  @elseif ($complain->status == 'Diproses')
+                    <option selected name="status">{{ $complain->status }}</option>
+                    <option value="1" name="status">{{ $complain->status = 'Diterima' }}</option>
+                    <option value="2" name="status">{{ $complain->status = 'Selesai' }}</option>
+                  @elseif ($complain->status == 'Selesai')
+                    <option selected name="status">{{ $complain->status }}</option>
+                    <option value="1" name="status">{{ $complain->status = 'Diterima' }}</option>
+                    <option value="2" name="status">{{ $complain->status = 'Diproses' }}</option>
+                  @endif
+                </select>
+              </form>
             </td>
             <td>{{ $complain->id_barang }}</td>
             <td>{{ $complain->id_pembeli }}</td>
             <td>{{ $complain->foto }}</td>
-            <td>
-                <button class="btn btn-warning"><i class="bi bi-pencil-square"></i></button>
-                <button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
-            </td>
+            <td><a href="/admin/data-riwayat-tindakan">Lihat</a></td>
           </tr>
         @endforeach
       </tbody>
