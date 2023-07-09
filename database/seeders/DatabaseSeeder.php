@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Komplain;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -23,17 +25,25 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
         ]);
 
-        // $this->call([
-        //     BarangSeeder::class,
-        // ]);
-
         $this->call([
-            Riwayat_Pengajuan_GaransiSeeder::class,
+            MerkSeeder::class,
         ]);
 
-        // $this->call([
-        //     Riwayat_TindakanSeeder::class,
-        // ]);
+        $this->call([
+            PetugasSeeder::class,
+        ]);
+
+        $this->call([
+            BarangSeeder::class,
+        ]);
+
+        $this->call([
+            KomplainSeeder::class,
+        ]);
+
+        $this->call([
+            HistoriSeeder::class,
+        ]);
 
     }
 }
