@@ -1,12 +1,15 @@
 @extends('layouts.administrator')
 
 @section('content')
-<div class="page-heading" style="margin-bottom: 20px;">
+<div class="page-heading" style="margin-bottom: 20px; display: flex; align-items: center;">
     <h3 style="margin-bottom: 15px;">Data Pembeli</h3>
-    <div style="display: flex; justify-content: flex-end;">
-        <a href="addpembeli" class="btn icon icon-left btn-primary">+ Tambah pembeli</a>
-    </div>
+    <a href="#" class="btn icon icon-left btn-success btn-sm" style="margin-left: auto;"><i data-feather="plus"></i>
+        Tambah Data Pembeli</a>
 </div>
+
+
+
+
 <!-- Basic Tables start -->
 <div class="section">
     <div class="row" id="basic-table">
@@ -35,13 +38,15 @@
                                         <td class="text-bold-500">{{ $row->email }}</td>
                                         <td>{{ $row->notelp }}</td>
                                         <td>
-                                            <div style="display: flex; align-items:center; gap: 5px">
-                                                <a href="editpembeli{{ $row -> id }}" class="btn btn-sm icon btn-primary"><i
-                                                        class="bi bi-pencil"></i></a>
-                                                <a href="deletepembeli{{ $row -> id }}" class="btn btn-sm icon btn-danger"><i
-                                                        class="bi bi-x"></i></a>
+                                            <div
+                                                style="display: flex; align-items: center; justify-content: center; gap: 5px">
+                                                <a href="editpembeli{{ $row->id }}"
+                                                    class="btn btn-sm icon btn-primary"><i class="bi bi-pencil"></i></a>
+                                                <a href="deletepembeli{{ $row->id }}"
+                                                    class="btn btn-sm icon btn-danger"><i class="bi bi-x"></i></a>
                                             </div>
                                         </td>
+
                                     </tr>
                                     @endforeach
                                 </tbody>

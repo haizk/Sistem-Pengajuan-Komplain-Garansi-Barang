@@ -1,39 +1,62 @@
 @extends('layouts.administrator')
-@section('container')
 
-<div class="container-xxl flex-grow-1 container-p-y">
-    <h4 class="fw-bold py-3 mb-4">
-        <span class="text-muted fw-light">Barang /</span> Barang
-    </h4>
-
-    <!-- Responsive Table -->
-    <div class="card">
-        <h5 class="card-header">List Barang</h5>
-        <div class="table-responsive text-nowrap">
-            <table class="table">
-                <thead>
-                    <tr class="text-nowrap">
-                        <th>Id</th>
-                        <th>Nama Barang</th>
-                        <th>Harga</th>
-                        <th>Merk</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($barangs as $barang)
-                    <tr>
-                        <th scope="row">{{ $barang->id }}</th>
-                        <td>{{ $barang->id_barang }}</td>
-                        <td>{{ $barang->nama }}</td>
-                        <td>{{ $barang->harga }}</td>
-                        <td>{{ $complain->merk->nama }}</td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <!--/ Responsive Table -->
+@section('content')
+<div class="page-heading" style="margin-bottom: 20px; display: flex; align-items: center;">
+    <h3 style="margin-bottom: 15px;">Data Barang</h3>
+    <a href="#" class="btn icon icon-left btn-success btn-sm" style="margin-left: auto;"><i data-feather="plus"></i>
+        Tambah Data Barang</a>
 </div>
 
+<!-- Basic Tables start -->
+<div class="section">
+    <div class="row" id="basic-table">
+        <div class="col-12 col-md-12">
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-body">
+                        <!-- Table with outer spacing -->
+                        <div class="table-responsive">
+                            <table class="table table-lg">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>NAME</th>
+                                        <th>MERK</th>
+                                        <th>HARGA</th>
+                                        <th style="text-align:center">AKSI</th>
+                                    </tr>
+                                </thead>
+                                </tr>
+                                <tbody>
+                                    @foreach ($barang as $key => $row)
+                                    <tr>
+                                        <td class="text-bold-500">{{ $row->id }}</td>
+                                        <td class="text-bold-500">{{ $row->nama }}</td>
+                                        <td class="text-bold-500">{{ $row->id_merk }}</td>
+                                        <td class="text-bold-500">{{ $row->harga }}</td>
+                                        <td>
+                                            <div
+                                                style="display: flex; align-items: center; justify-content: center; gap: 5px">
+                                                <a href="editpembeli{{ $row->id }}"
+                                                    class="btn btn-sm icon btn-primary"><i class="bi bi-pencil"></i></a>
+                                                <a href="deletepembeli{{ $row->id }}"
+                                                    class="btn btn-sm icon btn-danger"><i class="bi bi-x"></i></a>
+                                            </div>
+                                        </td>
+
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mb-2">
+        Showing {{ $barang->firstItem() }} of {{ $barang->total() }}
+    </div>
+    {{ $barang->links() }}
+</div>
 @endsection
