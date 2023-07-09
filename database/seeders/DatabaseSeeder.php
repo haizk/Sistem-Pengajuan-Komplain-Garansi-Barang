@@ -27,9 +27,10 @@ class DatabaseSeeder extends Seeder
         //     BarangSeeder::class,
         // ]);
 
-        $this->call([
+        /*$this->call([
             Riwayat_Pengajuan_GaransiSeeder::class,
         ]);
+        */
 
         // $this->call([
         //     Riwayat_TindakanSeeder::class,

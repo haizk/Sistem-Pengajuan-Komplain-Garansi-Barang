@@ -35,7 +35,7 @@ class LoginController extends Controller
             return Redirect::intended('/admin/datapengajuangaransi');
         }
         else if ($user->role == 'Administrator'){
-            return Redirect::intended('/administrator/merk');
+            return Redirect::intended('/administrator');
         }
     }
     /**

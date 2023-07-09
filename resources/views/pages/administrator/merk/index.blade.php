@@ -24,7 +24,7 @@
                     <tr class="text-nowrap">
                         <th>Id</th>
                         <th>Nama Merk</th>
-                        <th><th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
