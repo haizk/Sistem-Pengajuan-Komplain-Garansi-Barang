@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Controllers\admin\DataPengajuanGaransiController;
+use App\Models\Riwayat_Pengajuan_Garansi;
+use App\Models\Riwayat_Tindakan;
 use App\Models\Merk;
 use App\Models\Barang;
-use App\Http\Controllers\admin\DataPengajuanGaransiController;
-use App\Http\Controllers\admin\DataRiwayatTindakanController;
+use App\Http\Controllers\administrator\DashboardController;
+use App\Http\Controllers\administrator\UserController;
 use App\Http\Controllers\administrator\MerkController;
 use App\Http\Controllers\administrator\BarangController;
 use App\Http\Controllers\pembeli\ComplainController;
@@ -41,8 +44,7 @@ Route::middleware(['auth', 'pembeli'])->group(function () {
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/admin/data-pengajuan-garansi', [DataPengajuanGaransiController::class, 'index'])->name('admin.dataPengajuanGaransi.index');
-    Route::get('/admin/data-riwayat-tindakan', [DataRiwayatTindakanController::class, 'index'])->name('admin.dataRiwayatTindakan.index');
+    Route::get('/admin/datapengajuangaransi', [DataPengajuanGaransiController::class, 'index'])->name('admin.dataPengajuanGaransi.index');
 });
 
 Route::middleware(['auth', 'manager'])->group(function () {
@@ -52,10 +54,11 @@ Route::middleware(['auth', 'manager'])->group(function () {
 });
 
 Route::middleware(['auth', 'administrator'])->prefix('administrator')->name('administrator.')->group(function () {
-    // Rute untuk MerkController
-    Route::get('/merk', [MerkController::class, 'index'])->name('merk.index');
-    Route::get('/merk/create', [MerkController::class, 'create'])->name('merk.create');
-    Route::post('/merk', [MerkController::class, 'store'])->name('merk.store');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('administrator.index');
+    Route::get('/dataPembeli', [UserController::class, 'showPembeli'])->name('administrator.pages.dataPembeli');
+    // Route::get('/merk', [MerkController::class, 'index'])->name('merk.index');
+    // Route::get('/merk/create', [MerkController::class, 'create'])->name('merk.create');
+    // Route::post('/merk', [MerkController::class, 'store'])->name('merk.store');
 });
 
 
@@ -83,6 +86,3 @@ Route::middleware([
 */
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::resource('/admin/pembeli', BarangController::class);
-Route::resource('/admin/riwayat-tindakan', Riwayat_TindakanController::class);
