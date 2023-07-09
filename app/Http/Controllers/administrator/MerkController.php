@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\administrator;
 use App\Http\Controllers\Controller;
 
 use App\Models\Merk;
@@ -10,10 +10,10 @@ use App\Models\Barang;
 class MerkController extends Controller
 {
     public function index(Request $request){
-        $merkList = Merk::all();
+        $merks = Merk::all();
 
         return view('pages.administrator.merk.index', [
-            'merkList' => $merkList
+            'merks' => $merks
         ]);
     }
 
@@ -29,6 +29,47 @@ class MerkController extends Controller
     Merk::create($validated);
 
     return redirect()->route('administrator.merk.index')->with('success', 'Data merk berhasil ditambahkan.');
+    }
+
+    public function edit($id)
+    {
+        $merk = Merk::find($id);
+
+        if (!$merk) {
+            return redirect()->route('administrator.merk.index')->with('error', 'Merk not found');
+        }
+
+        return view('pages.administrator.merk.edit', ['merk' => $merk]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $validated = $request->validate([
+            'nama' => ['required', 'string'],
+        ]);
+
+        $merk = Merk::find($id);
+
+        if (!$merk) {
+            return redirect()->route('administrator.merk.index')->with('error', 'Merk not found');
+        }
+
+        $merk->nama = $validated['nama'];
+        $merk->save();
+
+        return redirect()->route('administrator.merk.index')->with('success', 'Data merk berhasil diperbarui.');
+    }
+
+    public function destroy($id){
+        $merk = Merk::find($id);
+
+        if(!$merk){
+            return redirect()->route('administrator.merk.index')->with('error', 'Menu tidak Ditemukan!');
+        }
+
+        $merk->delete();
+
+        return redirect()->route('administrator.merk.index')->with('success', 'Deleted Successfully');
     }
 
 }

@@ -51,11 +51,13 @@ Route::middleware(['auth', 'manager'])->group(function () {
     })->name('manager.index');
 });
 
-Route::middleware(['auth', 'administrator'])->prefix('administrator')->name('administrator.')->group(function () {
+Route::middleware(['auth', 'administrator'])->group(function () {
     // Rute untuk MerkController
-    Route::get('/merk', [MerkController::class, 'index'])->name('merk.index');
-    Route::get('/merk/create', [MerkController::class, 'create'])->name('merk.create');
-    Route::post('/merk', [MerkController::class, 'store'])->name('merk.store');
+    Route::get('/administrator/merk', [MerkController::class, 'index'])->name('administrator.merk.index');
+    Route::post('/administrator/merk', [MerkController::class, 'store'])->name('administrator.merk.store');
+    Route::get('/administrator/merk/{id}/edit', [MerkController::class, 'edit']) -> name('administrator.merk.edit');
+    Route::put('/administrator/merk/{id}', [MerkController::class, 'update']) -> name('administrator.merk.update');
+    Route::delete('/administrator/merk/{id}', [MerkController::class, 'destroy']) -> name('administrator.merk.destroy');
 });
 
 
