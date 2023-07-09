@@ -9,7 +9,7 @@
         </li>
         
         <li class="sidebar-item {{ Request::is('admin/pembeli') ? 'active' : '' }}">
-            <a href="/dataPembeli" class='sidebar-link'>
+            <a href="/administrator/dataPembeli" class='sidebar-link'>
                 <i class="bi bi-person-lines-fill"></i>
                 <span>Data Pembeli</span>
             </a>

@@ -55,7 +55,8 @@ Route::middleware(['auth', 'manager'])->group(function () {
 
 Route::middleware(['auth', 'administrator'])->prefix('administrator')->name('administrator.')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('administrator.index');
-    Route::get('/dataPembeli', [UserController::class, 'showPembeli'])->name('administrator.pages.dataPembeli');
+    Route::get('/dataPembeli', [UserController::class, 'showPembeli'])->name('administrator.dataPembeli');
+    
     // Route::get('/merk', [MerkController::class, 'index'])->name('merk.index');
     // Route::get('/merk/create', [MerkController::class, 'create'])->name('merk.create');
     // Route::post('/merk', [MerkController::class, 'store'])->name('merk.store');

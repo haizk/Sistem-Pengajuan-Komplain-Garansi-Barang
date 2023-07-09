@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="page-heading" style="margin-bottom: 20px;">
-    <h3 style="margin-bottom: 15px;">Data pembeli</h3>
+    <h3 style="margin-bottom: 15px;">Data Pembeli</h3>
     <div style="display: flex; justify-content: flex-end;">
         <a href="addpembeli" class="btn icon icon-left btn-primary">+ Tambah pembeli</a>
     </div>
@@ -23,8 +23,7 @@
                                         <th>NAME</th>
                                         <th>EMAIL</th>
                                         <th>NO TELP</th>
-                                        <th>ROLE</th>
-                                        <!-- <th style="text-align:center">AKSI</th> -->
+                                        <th style="text-align:center">AKSI</th>
                                     </tr>
                                 </thead>
                                 </tr>
@@ -35,15 +34,14 @@
                                         <td class="text-bold-500">{{ $row->name }}</td>
                                         <td class="text-bold-500">{{ $row->email }}</td>
                                         <td>{{ $row->notelp }}</td>
-                                        <td class="text-bold-500">{{ $row->role }}</td>
-                                        <!-- <td>
+                                        <td>
                                             <div style="display: flex; align-items:center; gap: 5px">
                                                 <a href="editpembeli{{ $row -> id }}" class="btn btn-sm icon btn-primary"><i
                                                         class="bi bi-pencil"></i></a>
                                                 <a href="deletepembeli{{ $row -> id }}" class="btn btn-sm icon btn-danger"><i
                                                         class="bi bi-x"></i></a>
                                             </div>
-                                        </td> -->
+                                        </td>
                                     </tr>
                                     @endforeach
                                 </tbody>
