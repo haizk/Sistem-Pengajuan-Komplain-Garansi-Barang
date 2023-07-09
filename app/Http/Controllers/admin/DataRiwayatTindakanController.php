@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
 use App\Models\Riwayat_Tindakan;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class Riwayat_TindakanController extends Controller
+class DataRiwayatTindakanController extends Controller
 {
     /**
      * Display a listing of the resource.

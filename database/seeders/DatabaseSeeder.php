@@ -23,17 +23,17 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
         ]);
 
-        $this->call([
-            BarangSeeder::class,
-        ]);
+        // $this->call([
+        //     BarangSeeder::class,
+        // ]);
 
         $this->call([
             Riwayat_Pengajuan_GaransiSeeder::class,
         ]);
 
-        $this->call([
-            Riwayat_TindakanSeeder::class,
-        ]);
+        // $this->call([
+        //     Riwayat_TindakanSeeder::class,
+        // ]);
 
     }
 }

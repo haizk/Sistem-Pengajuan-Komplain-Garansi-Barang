@@ -1,10 +1,9 @@
 <?php
 
-use App\Http\Controllers\admin\DataPengajuanGaransiController;
-use App\Models\Riwayat_Pengajuan_Garansi;
-use App\Models\Riwayat_Tindakan;
 use App\Models\Merk;
 use App\Models\Barang;
+use App\Http\Controllers\admin\DataPengajuanGaransiController;
+use App\Http\Controllers\admin\DataRiwayatTindakanController;
 use App\Http\Controllers\administrator\MerkController;
 use App\Http\Controllers\administrator\BarangController;
 use App\Http\Controllers\pembeli\ComplainController;
@@ -42,7 +41,8 @@ Route::middleware(['auth', 'pembeli'])->group(function () {
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/admin/datapengajuangaransi', [DataPengajuanGaransiController::class, 'index'])->name('admin.dataPengajuanGaransi.index');
+    Route::get('/admin/data-pengajuan-garansi', [DataPengajuanGaransiController::class, 'index'])->name('admin.dataPengajuanGaransi.index');
+    Route::get('/admin/data-riwayat-tindakan', [DataRiwayatTindakanController::class, 'index'])->name('admin.dataRiwayatTindakan.index');
 });
 
 Route::middleware(['auth', 'manager'])->group(function () {
@@ -85,5 +85,4 @@ Route::middleware([
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('/admin/pembeli', BarangController::class);
-Route::resource('/admin/riwayat-pengajuan-garansi', Riwayat_Pengajuan_GaransiController::class);
 Route::resource('/admin/riwayat-tindakan', Riwayat_TindakanController::class);
