@@ -14,11 +14,7 @@ class Barang extends Model
     protected $fillable = [
         'nama',
         'harga',
-        'jumlah',
-        'merk',
-        'tanggal_pembelian',
-        'batas_garansi',
-        'id_pembeli'
+        'id_merk'
     ];
 
     protected $hidden = [
@@ -27,13 +23,13 @@ class Barang extends Model
         'updated_at'
     ];
 
-    public function Riwayat_Pengajuan_Garansi()
+    public function Komplain()
     {
-        return $this->hasMany(Riwayat_Pengajuan_Garansi::class);
+        return $this->hasMany(Komplain::class);
     }
 
-    public function User()
+    public function Merk()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Merk::class, 'id_merk');
     }
 }

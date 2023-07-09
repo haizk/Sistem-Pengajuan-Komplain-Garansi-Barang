@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+
 
 class LoginController extends Controller
 {
@@ -21,6 +26,18 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
+    protected function authenticated(Request $request, $user)
+    {
+        if ($user->role == 'Pembeli'){
+            return Redirect::intended('/pembeli');
+        }  
+        else if ($user->role == 'Admin'){
+            return Redirect::intended('/admin/datapengajuangaransi');
+        }
+        else if ($user->role == 'Administrator'){
+            return Redirect::intended('/administrator/merk');
+        }
+    }
     /**
      * Where to redirect users after login.
      *

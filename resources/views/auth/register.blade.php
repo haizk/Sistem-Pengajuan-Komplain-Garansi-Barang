@@ -34,6 +34,12 @@
                     </div>
                 </div>
                 <div class="form-group position-relative has-icon-left mb-4">
+                    <input type="text" class="form-control form-control-xl" placeholder="081280971999" name="notelp" required>
+                    <div class="form-control-icon" style="padding-left: 13px;">
+                        <i class="bi bi-telephone"></i>
+                    </div>
+                </div>
+                <div class="form-group position-relative has-icon-left mb-4">
                     <input type="password" class="form-control form-control-xl" placeholder="Password" name="password" required>
                     <div class="form-control-icon" style="padding-left: 13px;">
                         <i class="bi bi-shield-lock"></i>

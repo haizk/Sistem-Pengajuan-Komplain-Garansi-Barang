@@ -26,7 +26,9 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'notelp',
         'password',
+        'role',
     ];
 
     /**
@@ -58,4 +60,9 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+    
+    public function Komplain()
+    {
+        return $this->hasMany(Komplain::class);
+    }
 }
