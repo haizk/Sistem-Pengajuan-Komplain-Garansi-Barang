@@ -8,10 +8,10 @@
     </h4>
     <!-- Responsive Table -->
     <div class="card">
-        <div class="table-responsive text-nowrap">
+        <div class="table-responsive">
             <table class="table">
                 <thead>
-                    <tr class="text-nowrap">
+                    <tr>
                         <th>ID</th>
                         <th>Nama</th>
                         <th style="text-align:center">Aksi</th>
@@ -22,17 +22,19 @@
                     <tr>
                         <th scope="row">{{ $petugas->id }}</th>
                         <td>{{ $petugas->nama }}</td>
-                        <td>
-                        <td>
-                            <a class="btn btn-warning" href="editPetugas{{ $petugas->id }}">
-                                <i class="bi bi-pencil-square"></i>
-                            </a>
-                            <form action="deletePetugas{{ $petugas->id }}"
-                                class="d-inline">
-                                <button class="btn btn-danger" onclick="return confirm('Are you sure?')"><i
-                                        class="bi bi-trash-fill"></i></button>
-                            </form>
+                        <td style="text-align: center;">
+                            <div style="display: flex; justify-content: center; gap: 5px">
+                                <a class="btn btn-warning" href="editPetugas{{ $petugas->id }}">
+                                    <i class="bi bi-pencil-square"></i>
+                                </a>
+                                <form action="deletePetugas{{ $petugas->id }}" class="d-inline">
+                                    <button class="btn btn-danger" onclick="return confirm('Are you sure?')">
+                                        <i class="bi bi-trash-fill"></i>
+                                    </button>
+                                </form>
+                            </div>
                         </td>
+
                     </tr>
                     @endforeach
                 </tbody>
