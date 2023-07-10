@@ -5,6 +5,7 @@ use App\Models\Merk;
 use App\Models\Barang;
 use App\Http\Controllers\admin\DataPengajuanGaransiController;
 use App\Http\Controllers\admin\DataRiwayatTindakanController;
+use App\Http\Controllers\admin\PetugasController;
 use App\Http\Controllers\administrator\MerkController;
 use App\Http\Controllers\administrator\BarangController;
 use App\Http\Controllers\pembeli\ComplainController;
@@ -46,6 +47,7 @@ Route::middleware(['auth', 'admin'])->group( function () {
         Route::resource('/data-pengajuan-garansi', DataPengajuanGaransiController::class);
         Route::resource('/data-riwayat-tindakan', DataRiwayatTindakanController::class);
         Route::resource('data-pengajuan-garansi.data-riwayat-tindakan', DataRiwayatTindakanController::class);
+        Route::resource('/petugas', PetugasController::class);
     });
 });
 
