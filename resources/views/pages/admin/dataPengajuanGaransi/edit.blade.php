@@ -18,19 +18,19 @@
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label" for="tanggal_pembelian">Tanggal Pembelian</label>
                             <div class="col-md-10">
-                                <input class="form-control" type="date" id="tanggal_pembelian" name="tanggal_pembelian" disabled value="{{ old('tanggal_pembelian', $complain->tanggal_pembelian) }}" />
+                                <input class="form-control" type="date" id="tanggal_pembelian" name="tanggal_pembelian" disabled value="{{ $complain->tanggal_pembelian }}" />
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label" for="batas_garansi">Batas Garansi</label>
                             <div class="col-md-10">
-                                <input class="form-control" type="date" id="batas_garansi" name="batas_garansi" disabled value="{{ old('batas_garansi', $complain->batas_garansi) }}" />
+                                <input class="form-control" type="date" id="batas_garansi" name="batas_garansi" disabled value="{{ $complain->batas_garansi }}" />
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label" for="keluhan">Keluhan</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="keluhan" name="keluhan" disabled value="{{ old('keluhan', $complain->keluhan) }}" />
+                                <input type="text" class="form-control" id="keluhan" name="keluhan" disabled value="{{ $complain->keluhan }}" />
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -38,22 +38,22 @@
                             <div class="form-group">
                                 <select class="form-select" autofocus>
                                     @if ($complain->status == 'Diterima')
-                                      <option selected name="status">{{ old('status', $complain->status) }}</option>
+                                      <option selected name="status">{{ $complain->status }}</option>
                                       <option value="1" name="status">{{ $complain->status = 'Diproses' }}</option>
                                       <option value="2" name="status">{{ $complain->status = 'Selesai' }}</option>
                                       <option value="3" name="status">{{ $complain->status = 'Diganti Baru' }}</option>
                                     @elseif ($complain->status == 'Diproses')
-                                      <option selected name="status">{{ old('status', $complain->status) }}</option>
+                                      <option selected name="status">{{ $complain->status }}</option>
                                       <option value="1" name="status">{{ $complain->status = 'Diterima' }}</option>
                                       <option value="2" name="status">{{ $complain->status = 'Selesai' }}</option>
                                       <option value="3" name="status">{{ $complain->status = 'Diganti Baru' }}</option>
                                     @elseif ($complain->status == 'Diganti Baru')
-                                      <option selected name="status">{{ old('status', $complain->status) }}</option>
+                                      <option selected name="status">{{ $complain->status }}</option>
                                       <option value="1" name="status">{{ $complain->status = 'Diterima' }}</option>
                                       <option value="2" name="status">{{ $complain->status = 'Diproses' }}</option>
                                       <option value="3" name="status">{{ $complain->status = 'Selesai' }}</option>
                                     @elseif ($complain->status == 'Selesai')
-                                      <option selected name="status">{{ old('status', $complain->status) }}</option>
+                                      <option selected name="status">{{ $complain->status }}</option>
                                       <option value="1" name="status">{{ $complain->status = 'Diterima' }}</option>
                                       <option value="2" name="status">{{ $complain->status = 'Diproses' }}</option>
                                       <option value="3" name="status">{{ $complain->status = 'Diganti Baru' }}</option>
@@ -64,13 +64,13 @@
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label" for="id_barang">ID Barang</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="id_barang" name="id_barang" disabled value="{{ old('id_barang', $complain->id_barang) }}" />
+                                <input type="text" class="form-control" id="id_barang" name="id_barang" disabled value="{{ $complain->id_barang }}" />
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label" for="id_pembeli">ID Pembeli</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="id_pembeli" name="id_pembeli" disabled value="{{ old('id_pembeli', $complain->id_pembeli) }}" />
+                                <input type="text" class="form-control" id="id_pembeli" name="id_pembeli" disabled value="{{ $complain->id_pembeli }}" />
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -87,7 +87,7 @@
                     
                         <div class="row justify-content-end">
                             <div class="col-sm-10">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
                             </div>
                         </div>
                     </form>

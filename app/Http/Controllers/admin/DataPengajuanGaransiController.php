@@ -19,42 +19,39 @@ class DataPengajuanGaransiController extends Controller
         ]);
     }
 
-    public function edit(Komplain $complain)
+    public function edit($id)
     {
-        return view('pages.admin.dataPengajuanGaransi.edit', [
-            'title' => 'Edit Data',
-            'complain' => $complain
-        ]);
+        $complain = Komplain::find($id);
+
+        if (!$complain) {
+            return redirect()->route('data-pengajuan-garansi.index')->with('error', 'Komplain Tidak Tersedia!');
+        }
+
+        return view('pages.admin.dataPengajuanGaransi.edit', ['complain' => $complain, 'title'=>'Edit Data']);
     }
 
     public function update(Request $request, Komplain $complain)
     {
         $validatedData = $request->validate([
-            'tanggal_pembelian' => 'required| date',
-            'batas_garansi' => 'required| date',
-            'keluhan' => 'required| string',
             'status' => 'required| string',
-            'id_barang' => 'required',
-            'id_pembeli' => 'required',
-            'foto' => 'nullable| image| file| mimes:jpeg,png,jpg,gif,svg| max:2048',
         ]);
 
-        Komplain::where('id', $complain->id)
-            ->update($validatedData);
+        $complain->status = $validatedData['status'];
+        $complain->save();
 
         return redirect()->route('data-pengajuan-garansi.index')->with('success', 'Data berhasil diubah!');
     }
 
-    public function destroy(Komplain $komplain, Histori $histori)
-    {
-        if($komplain->cover) {
-            Storage::delete($komplain->foto);
+    public function destroy($id_komplain){
+
+        $complain = Komplain::find($id_komplain);
+
+        if(!$complain){
+            return redirect()->route('data-pengajuan-garansi.index')->with('error', 'Komplain Tidak Tersedia!');
         }
 
-        Histori::destroy($histori->id);
+        $complain->delete();
 
-        Komplain::destroy($komplain->id);
-
-        return redirect()->route('data-pengajuan-garansi.index')->with('success', 'Data berhasil dihapus!');;
+        return redirect()->route('administrator.barang.index')->with('success', 'Data berhasil dihapus!');
     }
 }
