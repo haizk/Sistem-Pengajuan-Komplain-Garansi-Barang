@@ -22,7 +22,7 @@ class DataRiwayatTindakanController extends Controller
     {
         return view('pages.admin.dataRiwayatTindakan.create', [
             'title' => 'Tambah Riwayat Tindakan',
-            compact('komplain_id')
+            'komplain_id' => $komplain_id
         ]);
     }
 
@@ -36,27 +36,6 @@ class DataRiwayatTindakanController extends Controller
         ]);
 
         Histori::create($validatedData + ['komplain_id' => $komplain_id]);
-        return redirect()->route('data-pengajuan-garansi.data-riwayat-pengajuan.index', $komplain_id);
-    }
-
-    public function edit($komplain_id, Histori $histori)
-    {
-        return view('pages.admin.dataRiwayatTindakan.edit', [
-            'title' => 'Edit Riwayat Tindakan',
-            compact('komplain_id', 'histori')
-        ]);
-    }
-
-    public function update($komplain_id, Request $request, Histori $histori)
-    {
-        $validatedData = $request->validate([
-            'tanggal_tindakan' => 'required| date',
-            'tindakan' => 'required| string',
-            'id_komplain' => 'required| string',
-            'id_petugas' => 'required| string'
-        ]);
-
-        $histori->update($validatedData);
         return redirect()->route('data-pengajuan-garansi.data-riwayat-pengajuan.index', $komplain_id);
     }
 

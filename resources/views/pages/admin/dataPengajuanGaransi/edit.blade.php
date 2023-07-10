@@ -12,7 +12,7 @@
         <div class="col-xxl">
             <div class="card mb-4">
                 <div class="card-body">
-                    <form action="/admin/data-pengajuan-garansi/{{ $complain->id }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('data-pengajuan-garansi.update', $complain->id) }}" method="POST" enctype="multipart/form-data">
                         @method('put')
                         @csrf
                         <div class="row mb-3">

@@ -4,7 +4,7 @@
         
         <li
             class="sidebar-item {{ Request::is('admin/dashboard') ? 'active' : '' }} ">
-            <a href="/admin/dashboard" class='sidebar-link'>
+            <a href="/admin" class='sidebar-link'>
                 <i class="bi bi-grid-fill"></i>
                 <span>Dashboard</span>
             </a>
@@ -12,7 +12,7 @@
 
         <li class="sidebar-item {{ Request::is('admin/riwayat-pengajuan-garansi') ? 'active' : '' }}">
             <a href="/admin/data-pengajuan-garansi" class='sidebar-link'>
-                <i class="bi bi-stack"></i>
+                <i class="bi bi-file-earmark-bar-graph-fill"></i>
                 <span>Data Pengajuan Garansi</span>
             </a>
         </li>
