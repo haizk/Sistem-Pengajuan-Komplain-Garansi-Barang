@@ -28,8 +28,10 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+    return view('welcome', [
+        'title' => 'Home'
+    ]);
+});
 
 Route::middleware(['auth', 'pembeli'])->group(function () {
     Route::get('/pembeli', function () {

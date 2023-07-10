@@ -4,7 +4,7 @@
 
 <div class="container-xxl flex-grow-1 container-p-y">
     <h4 class="fw-bold py-3 mb-4">
-        Edit Status Pengajuan
+        <span class="text-muted fw-light">Riwayat Pengajuan Garansi /</span> Edit
     </h4>
     <!-- Basic Layout & Basic with Icons -->
     <div class="row">
@@ -12,7 +12,7 @@
         <div class="col-xxl">
             <div class="card mb-4">
                 <div class="card-body">
-                    <form action="/admin/data-pengajuan-garansi/{{ $complain->id }}" method="POST" enctype="multipart/form-data">
+                    <form action="admin/data-pengajuan-garansi/{{ $complain->id }}" method="POST" enctype="multipart/form-data">
                         @method('put')
                         @csrf
                         <div class="row mb-3">
