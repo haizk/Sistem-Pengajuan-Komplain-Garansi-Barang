@@ -41,11 +41,12 @@ Route::middleware(['auth', 'pembeli'])->group(function () {
     Route::post('/pembeli/ajukan_komplain', [AjukanComplainController::class, 'store'])->name('pembeli.ajukan_komplain.store');
 });
 
-Route::middleware(['auth', 'admin'])->group(function () {
-    
-    Route::resource('/admin/data-riwayat-tindakan', DataRiwayatTindakanController::class);
-    Route::post('/admin/data-riwayat-tindakan', [DataRiwayatTindakanController::class, 'store'])->name('admin.data-riwayat-tindakan.store');
-    Route::resource('/admin/data-pengajuan-garansi', DataPengajuanGaransiController::class);
+Route::middleware(['auth', 'admin'])->group( function () {
+    Route::group(['prefix' => 'admin'], function() {
+        Route::resource('/data-pengajuan-garansi', DataPengajuanGaransiController::class);
+        Route::resource('/data-riwayat-tindakan', DataRiwayatTindakanController::class);
+        Route::resource('data-pengajuan-garansi.data-riwayat-tindakan', DataRiwayatTindakanController::class);
+    });
 });
 
 Route::middleware(['auth', 'manager'])->group(function () {

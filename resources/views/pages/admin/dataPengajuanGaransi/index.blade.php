@@ -29,7 +29,7 @@
       <tbody class="table-hover">
         @foreach ($complains as $complain)
             <tr>
-            <td>{{ $complain->id }}</td>
+            <td>{{ $loop->iteration }}</td>
             <td>{{ $complain->tanggal_pembelian }}</td>
             <td>{{ $complain->batas_garansi }}</td>
             <td>{{ $complain->keluhan }}</td>
@@ -47,12 +47,12 @@
             <td>{{ $complain->id_barang }}</td>
             <td>{{ $complain->id_pembeli }}</td>
             <td>{{ $complain->foto }}</td>
-            <td><a href="/admin/data-riwayat-tindakan">Lihat</a></td>
+            <td><a href="{{ route('data-pengajuan-garansi.data-riwayat-tindakan.index', $complain->id) }}">Lihat</a></td>
             <td>
-                <a class="btn btn-warning" href="/admin/data-pengajuan-garansi/{{ $complain->id }}/edit">
+                <a class="btn btn-warning" href="{{ route('data-pengajuan-garansi.edit', $complain->id) }}">
                   <i class="bi bi-pencil-square"></i>
                 </a>
-                <form action="/admin/data-pengajuan-garansi/{{ $complain->id }}" method="post" class="d-inline">
+                <form action="{{ route('data-pengajuan-garansi.destroy', $complain->id) }}" method="post" class="d-inline">
                   @csrf
                   @method('delete')
                   <button class="btn btn-danger" onclick="return confirm('Are you sure?')"><i class="bi bi-trash-fill"></i></button>

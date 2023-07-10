@@ -2,103 +2,68 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Models\Komplain;
 use App\Models\Histori;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class DataRiwayatTindakanController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function index($komplain_id)
     {
-        // $komplainIDs = Komplain::pluck('id');
-        // $komplain = Komplain::pluck('id');
-
-        // Histori::where('id_komplain', $komplain->id)
-        //     return view('pages.admin.dataRiwayatTindakan.index', [
-        //         'historis' => Histori::all()
-        //     ]);
+        $historis = Histori::where('id_komplain', $komplain_id)->get();
+        return view('pages.admin.dataRiwayatTindakan.index', [
+            'title' => 'Riwayat Tindakan',
+            'historis' => $historis
+        ]);
         
-        $historis = Histori::all();
-        return view('pages.admin.dataRiwayatTindakan.index', compact('historis'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function create($komplain_id)
     {
-        //
+        return view('pages.admin.dataRiwayatTindakan.create', [
+            'title' => 'Tambah Riwayat Tindakan',
+            compact('komplain_id')
+        ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request){
-        $validated = $request->validate([
-            'tanggal_tindakan' => ['required', 'date'],
-            'tindakan' => ['required', 'string'],
-            'id_komplain' => ['required', 'int'],
-            'id_petugas' => ['required', 'int'],
+    public function store($komplain_id, Request $request)
+    {
+        $validatedData = $request->validate([
+            'tanggal_tindakan' => 'required| date',
+            'tindakan' => 'required| string',
+            'id_komplain' => 'required| string',
+            'id_petugas' => 'required| string'
         ]);
 
-        if(!$validated){
-            return redirect()->route('pages.admin.dataPengajuanGaransi.index')->with('error', 'validated failed!');
-        }
-        // Proses penyimpanan data barang dengan foto
-        $idAdmin = auth()->user()->id;
-        $status = 'Pending';
+        Histori::create($validatedData + ['komplain_id' => $komplain_id]);
+        return redirect()->route('data-pengajuan-garansi.data-riwayat-pengajuan.index', $komplain_id);
+    }
 
-        // Create Menu
-        Histori::Create([
-            'tanggal_tindakan' => $validated['tanggal_tindakan'],
-            'tindakan' => $validated['tindakan'],
-            'id_komplain' => $validated['id_komplain'],
-            'id_petugas' => $validated['id_petugas'],
+    public function edit($komplain_id, Histori $histori)
+    {
+        return view('pages.admin.dataRiwayatTindakan.edit', [
+            'title' => 'Edit Riwayat Tindakan',
+            compact('komplain_id', 'histori')
+        ]);
+    }
+
+    public function update($komplain_id, Request $request, Histori $histori)
+    {
+        $validatedData = $request->validate([
+            'tanggal_tindakan' => 'required| date',
+            'tindakan' => 'required| string',
+            'id_komplain' => 'required| string',
+            'id_petugas' => 'required| string'
         ]);
 
-        return redirect()->route('pages.admin.dataRiwayatTindakan.index')->with('success', 'Created Successfully');
-
+        $histori->update($validatedData);
+        return redirect()->route('data-pengajuan-garansi.data-riwayat-pengajuan.index', $komplain_id);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Histori $histori)
+    public function destroy($komplain_id, Histori $histori)
     {
-        // $komplain = Komplain::find('id');
+        Histori::destroy($histori->id);
 
-        // if ($histori == $komplain) {
-        //     return view('pages.admin.dataRiwayatTindakan.index', [
-        //         'historis' => $histori
-        //     ]);
-        // }
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Histori $histori)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Histori $histori)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Histori $histori)
-    {
-        //
+        return redirect()->route('data-pengajuan-garansi.data-riwayat-pengajuan.index', $komplain_id)->with('success', 'Data berhasil dihapus!');
     }
 }
