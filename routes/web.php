@@ -47,7 +47,12 @@ Route::middleware(['auth', 'admin'])->group( function () {
         Route::resource('/data-pengajuan-garansi', DataPengajuanGaransiController::class);
         Route::resource('/data-riwayat-tindakan', DataRiwayatTindakanController::class);
         Route::resource('data-pengajuan-garansi.data-riwayat-tindakan', DataRiwayatTindakanController::class);
-        Route::resource('/petugas', PetugasController::class);
+        Route::get('/petugas', [PetugasController::class, 'index'])->name('admin.petugas.petugas');
+        Route::get('/addPetugas', [PetugasController::class, 'addPetugas'])->name('admin.petugas.addPetugas');
+        Route::post('/petugas', [PetugasController::class, 'store'])->name('admin.petugas.store');
+        Route::get('/editPetugas{id}', [PetugasController::class, 'editPetugas'])->name('admin.petugas.edit');
+        Route::post('/updatePetugas{id}', [PetugasController::class, 'updatePetugas'])->name('admin.petugas.update');
+        Route::get('/deletePetugas{id}', [PetugasController::class, 'deletePetugas'])->name('admin.petugas.destroy');
     });
 });
 
