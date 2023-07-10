@@ -9,8 +9,13 @@
     </div>
 @endif
 
-<h3>Riwayat Pengajuan Garansi</h3>
+<h3>Riwayat Tindakan</h3>
 <div class="table-responsive col-lg-11 mt-5">
+  <div class="mt-2 mb-4">
+    <a class="btn btn-primary" href="/admin/data-pengajuan-garansi/{{ $komplain_id }}}/data-riwayat-tindakan/create">
+        <i class="fas fa-plus">&ensp;Tambah Data</i>
+    </a>
+  </div>
     <table class="table table-striped table-dark table-bordered text-center">
       <thead>
         <tr>
@@ -31,9 +36,6 @@
             <td>{{ $histori->id_komplain }}</td>
             <td>{{ $histori->id_petugas }}</td>
             <td>
-                <a class="btn btn-warning" href="{{ route('data-pengajuan-garansi.data-riwayat-tindakan.edit', [$histori->id_komplain, $histori->id]) }}">
-                  <i class="bi bi-pencil-square"></i>
-                </a>
                 <form action="{{ route('data-pengajuan-garansi.data-riwayat-tindakan.destroy', [$histori->id_komplain, $histori->id]) }}" method="post" class="d-inline">
                   @csrf
                   @method('delete')

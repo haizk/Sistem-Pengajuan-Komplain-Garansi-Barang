@@ -44,8 +44,11 @@ Route::middleware(['auth', 'pembeli'])->group(function () {
 
 Route::middleware(['auth', 'admin'])->group( function () {
     Route::group(['prefix' => 'admin'], function() {
-        Route::resource('/data-pengajuan-garansi', DataPengajuanGaransiController::class);
-        Route::resource('/data-riwayat-tindakan', DataRiwayatTindakanController::class);
+        Route::get('/', function () {
+            return view('pages.admin.index');
+        })->name('dashboard');
+        Route::resource('data-pengajuan-garansi', DataPengajuanGaransiController::class);
+        Route::resource('data-riwayat-tindakan', DataRiwayatTindakanController::class);
         Route::resource('data-pengajuan-garansi.data-riwayat-tindakan', DataRiwayatTindakanController::class);
         Route::get('/petugas', [PetugasController::class, 'index'])->name('admin.petugas.petugas');
         Route::get('/addPetugas', [PetugasController::class, 'addPetugas'])->name('admin.petugas.addPetugas');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Models\Komplain;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Histori;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -22,7 +23,7 @@ class DataPengajuanGaransiController extends Controller
     {
         return view('pages.admin.dataPengajuanGaransi.edit', [
             'title' => 'Edit Data',
-            'complain' => $complain,
+            'complain' => $complain
         ]);
     }
 
@@ -44,11 +45,13 @@ class DataPengajuanGaransiController extends Controller
         return redirect()->route('data-pengajuan-garansi.index')->with('success', 'Data berhasil diubah!');
     }
 
-    public function destroy(Komplain $komplain)
+    public function destroy(Komplain $komplain, Histori $histori)
     {
         if($komplain->cover) {
             Storage::delete($komplain->foto);
         }
+
+        Histori::destroy($histori->id);
 
         Komplain::destroy($komplain->id);
 
