@@ -41,6 +41,8 @@
                   <span class="badge bg-warning">Diproses</span>
                 @elseif ($complain->status == 'Diterima')
                   <span class="badge bg-secondary">Diterima</span>
+                @elseif ($complain->status == 'Diganti Baru')
+                  <span class="badge bg-danger">Diganti Baru</span>
                 @endif
               </div>
             </td>

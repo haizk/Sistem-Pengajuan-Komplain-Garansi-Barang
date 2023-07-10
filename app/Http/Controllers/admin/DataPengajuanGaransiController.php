@@ -23,7 +23,7 @@ class DataPengajuanGaransiController extends Controller
     {
         return view('pages.admin.dataPengajuanGaransi.edit', [
             'title' => 'Edit Data',
-            'complain' => $complain,
+            'complain' => $complain
         ]);
     }
 

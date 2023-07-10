@@ -12,43 +12,51 @@
         <div class="col-xxl">
             <div class="card mb-4">
                 <div class="card-body">
-                    <form action="{{ route('data-pengajuan-garansi.update', $complain->id) }}" method="POST" enctype="multipart/form-data">
+                    <form action="/admin/data-pengajuan-garansi/{{ $complain->id }}" method="POST" enctype="multipart/form-data">
                         @method('put')
                         @csrf
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label" for="tanggal_pembelian">Tanggal Pembelian</label>
                             <div class="col-md-10">
-                                <input class="form-control" type="date" value="{{ $complain->tanggal_pembelian }}" id="tanggal_pembelian" name="tanggal_pembelian" disabled/>
+                                <input class="form-control" type="date" id="tanggal_pembelian" name="tanggal_pembelian" disabled value="{{ old('tanggal_pembelian', $complain->tanggal_pembelian) }}" />
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label" for="batas_garansi">Batas Garansi</label>
                             <div class="col-md-10">
-                                <input class="form-control" type="date" value="{{ $complain->batas_garansi }}" id="batas_garansi" name="batas_garansi" disabled/>
+                                <input class="form-control" type="date" id="batas_garansi" name="batas_garansi" disabled value="{{ old('batas_garansi', $complain->batas_garansi) }}" />
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label" for="keluhan">Keluhan</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" value="{{ $complain->keluhan }}" id="keluhan" placeholder="keluhan" name="keluhan" disabled/>
+                                <input type="text" class="form-control" id="keluhan" name="keluhan" disabled value="{{ old('keluhan', $complain->keluhan) }}" />
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label" for="status">Status</label>
                             <div class="form-group">
-                                <select class="form-select">
+                                <select class="form-select" autofocus>
                                     @if ($complain->status == 'Diterima')
-                                      <option selected name="status">{{ $complain->status }}</option>
+                                      <option selected name="status">{{ old('status', $complain->status) }}</option>
                                       <option value="1" name="status">{{ $complain->status = 'Diproses' }}</option>
                                       <option value="2" name="status">{{ $complain->status = 'Selesai' }}</option>
+                                      <option value="3" name="status">{{ $complain->status = 'Diganti Baru' }}</option>
                                     @elseif ($complain->status == 'Diproses')
-                                      <option selected name="status">{{ $complain->status }}</option>
+                                      <option selected name="status">{{ old('status', $complain->status) }}</option>
                                       <option value="1" name="status">{{ $complain->status = 'Diterima' }}</option>
                                       <option value="2" name="status">{{ $complain->status = 'Selesai' }}</option>
-                                    @elseif ($complain->status == 'Selesai')
-                                      <option selected name="status">{{ $complain->status }}</option>
+                                      <option value="3" name="status">{{ $complain->status = 'Diganti Baru' }}</option>
+                                    @elseif ($complain->status == 'Diganti Baru')
+                                      <option selected name="status">{{ old('status', $complain->status) }}</option>
                                       <option value="1" name="status">{{ $complain->status = 'Diterima' }}</option>
                                       <option value="2" name="status">{{ $complain->status = 'Diproses' }}</option>
+                                      <option value="3" name="status">{{ $complain->status = 'Selesai' }}</option>
+                                    @elseif ($complain->status == 'Selesai')
+                                      <option selected name="status">{{ old('status', $complain->status) }}</option>
+                                      <option value="1" name="status">{{ $complain->status = 'Diterima' }}</option>
+                                      <option value="2" name="status">{{ $complain->status = 'Diproses' }}</option>
+                                      <option value="3" name="status">{{ $complain->status = 'Diganti Baru' }}</option>
                                     @endif
                                 </select>
                             </div>
@@ -56,13 +64,13 @@
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label" for="id_barang">ID Barang</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" value="{{ $complain->id_barang }}" id="id_barang" placeholder="id_barang" name="id_barang" disabled/>
+                                <input type="text" class="form-control" id="id_barang" name="id_barang" disabled value="{{ old('id_barang', $complain->id_barang) }}" />
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label" for="id_pembeli">ID Pembeli</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" value="{{ $complain->id_pembeli }}" id="id_pembeli" placeholder="id_pembeli" name="id_pembeli" disabled/>
+                                <input type="text" class="form-control" id="id_pembeli" name="id_pembeli" disabled value="{{ old('id_pembeli', $complain->id_pembeli) }}" />
                             </div>
                         </div>
                         <div class="row mb-3">

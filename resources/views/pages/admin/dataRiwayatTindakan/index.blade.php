@@ -12,7 +12,7 @@
 <h3>Riwayat Tindakan</h3>
 <div class="table-responsive col-lg-11 mt-5">
   <div class="mt-2 mb-4">
-    <a class="btn btn-primary" href="{{ route('data-pengajuan-garansi.data-riwayat-tindakan.create', $komplain_id) }}">
+    <a class="btn btn-primary" href="/admin/data-pengajuan-garansi/{{ $komplain_id }}}/data-riwayat-tindakan/create">
         <i class="fas fa-plus">&ensp;Tambah Data</i>
     </a>
   </div>
