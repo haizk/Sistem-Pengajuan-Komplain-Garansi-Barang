@@ -42,9 +42,10 @@ class DataPengajuanGaransiController extends Controller
         return redirect()->route('data-pengajuan-garansi.index')->with('success', 'Data berhasil diubah!');
     }
 
-    public function destroy($id_komplain){
+    public function destroy($id){
 
-        $complain = Komplain::find($id_komplain);
+        $complain = Komplain::find($id);
+        $historis = Histori::where('id_komplain', $id)->delete();
 
         if(!$complain){
             return redirect()->route('data-pengajuan-garansi.index')->with('error', 'Komplain Tidak Tersedia!');
